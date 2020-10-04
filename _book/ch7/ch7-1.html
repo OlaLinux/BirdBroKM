@@ -1,0 +1,697 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Sec.7-1 認識Linux檔案系統 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ch7-1-3.html" />
+    
+    
+    <link rel="prev" href="../ch7.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../ch7.html">
+            
+                <a href="../ch7.html">
+            
+                    
+                    Ch.7 Linux檔案目錄、與磁碟格式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="ch7-1.html">
+            
+                <a href="ch7-1.html">
+            
+                    
+                    Sec.7-1 認識Linux檔案系統
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="ch7-1-3.html">
+            
+                <a href="ch7-1-3.html">
+            
+                    
+                    Sec.7-1-3 區塊群組(block group)的六個主要內容說明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Sec.7-1 認識Linux檔案系統</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="ch7-1-&#x8A8D;&#x8B58;linux&#x6A94;&#x6848;&#x7CFB;&#x7D71;">Ch7-1 &#x8A8D;&#x8B58;Linux&#x6A94;&#x6848;&#x7CFB;&#x7D71;</h1>
+<h2 id="7-1-1-&#x78C1;&#x789F;&#x7D44;&#x6210;&#x8207;&#x5206;&#x5272;&#x7684;&#x8907;&#x7FD2;">7-1-1 &#x78C1;&#x789F;&#x7D44;&#x6210;&#x8207;&#x5206;&#x5272;&#x7684;&#x8907;&#x7FD2;</h2>
+<h3 id="&#x78C1;&#x789F;&#x7684;&#x7269;&#x7406;&#x7D44;&#x6210;">&#x78C1;&#x789F;&#x7684;&#x7269;&#x7406;&#x7D44;&#x6210;</h3>
+<ul>
+<li>&#x5713;&#x5F62;&#x7684;&#x78C1;&#x789F;&#x76E4;(&#x7D00;&#x9304;&#x8CC7;&#x6599;)</li>
+<li>&#x6A5F;&#x68B0;&#x624B;&#x81C2;&#xFF0C;&#x8207;&#x5728;&#x6A5F;&#x68B0;&#x624B;&#x81C2;&#x4E0A;&#x7684;&#x78C1;&#x789F;&#x8B80;&#x53D6;&#x982D;(&#x8B80;&#x5BEB;&#x78C1;&#x76E4;&#x4E0A;&#x8CC7;&#x6599;)&#xFF1B;</li>
+<li>&#x4E3B;&#x8EF8;&#x99AC;&#x9054;(&#x8F49;&#x52D5;&#x6A5F;&#x5668;&#x624B;&#x81C2;)</li>
+</ul>
+<p><img src="https://i.imgur.com/tMS8tPk.png" alt="">
+&#x5716; 7-1-1.1 &#x78C1;&#x789F;&#x7D44;&#x6210;&#x793A;&#x610F;&#x5716; (&#x4F86;&#x6E90;:<a href="https://mropengate.blogspot.com/2015/01/operating-system-ch12-secondary-storage.html" target="_blank">OS - Ch12 &#x8F14;&#x52A9;&#x5132;&#x5B58;&#x7CFB;&#x7D71; Secondary-Storage Systems
+</a>)</p>
+<h3 id="&#x78C1;&#x789F;&#x76E4;&#x4E0A;&#x7D44;&#x6210;">&#x78C1;&#x789F;&#x76E4;&#x4E0A;&#x7D44;&#x6210;</h3>
+<ul>
+<li>&#x78C1;&#x5340;(Sector)&#x70BA;&#x6700;&#x5C0F;&#x7684;&#x7269;&#x7406;&#x5132;&#x5B58;&#x55AE;&#x4F4D;&#xFF0C;&#x4E14;&#x4F9D;&#x64DA;&#x78C1;&#x789F;&#x8A2D;&#x8A08;&#x7684;&#x4E0D;&#x540C;&#xFF0C;<ul>
+<li>&#x76EE;&#x524D;&#x4E3B;&#x8981;&#x6709; 512bytes &#x8207; 4K &#x5169;&#x7A2E;&#x683C;&#x5F0F;</li>
+</ul>
+</li>
+<li>&#x78C1;&#x67F1;(Cylinder): &#x5C07;&#x78C1;&#x5340;&#x6210;&#x4E00;&#x500B;&#x5713;</li>
+</ul>
+<h3 id="&#x78C1;&#x789F;&#x5206;&#x5272;">&#x78C1;&#x789F;&#x5206;&#x5272;</h3>
+<ul>
+<li>&#x6700;&#x5C0F;&#x5206;&#x5272;&#x55AE;&#x4F4D;</li>
+</ul>
+<p>&#x4F7F;&#x7528;&#x78C1;&#x5340;&#x70BA;&#x6700;&#x5C0F;&#x5206;&#x5272;&#x55AE;&#x4F4D;</p>
+<blockquote>
+<p>&#x6BCF;&#x500B;&#x78C1;&#x5340;&#x90FD;&#x6709;&#x5176;&#x865F;&#x78BC;&#x5594;&#xFF0C;&#x5C31;&#x597D;&#x50CF;&#x5EA7;&#x4F4D;&#x4E00;&#x6A23;</p>
+</blockquote>
+<ul>
+<li>&#x5206;&#x5272;&#x65B9;&#x5F0F;<ul>
+<li>MBR &#x5206;&#x5272;&#x8868;  (Master Boot Record&#x4E3B;&#x958B;&#x6A5F;&#x8A18;&#x9304;)<ul>
+<li>&#x7B2C;&#x4E00;&#x500B;&#x78C1;&#x5340;&#x6700;&#x91CD;&#x8981;&#xFF0C;&#x88E1;&#x9762;&#x6709;&#xFF1A;<ul>
+<li>(1) &#x4E3B;&#x8981;&#x958B;&#x6A5F;&#x5340;(Master boot record, MBR)&#xFF0C;&#x4F54;&#x6709; 446 bytes</li>
+<li>(2) &#x5206;&#x5272;&#x8868;(partition table)&#xFF0C;&#x4F54;&#x6709; 64 bytes&#x3002;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>GPT &#x5206;&#x5272;&#x8868;  (GUID Partition Table)<ul>
+<li>&#x5206;&#x5272;&#x6578;&#x91CF;&#x64F4;&#x5145;&#x8F03;&#x591A;&#x4E4B;&#x5916;</li>
+<li>&#x652F;&#x63F4;&#x7684;&#x78C1;&#x789F;&#x5BB9;&#x91CF;&#x8D85;&#x904E; 2TB&#x3002;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="&#x78C1;&#x789F;&#x6A94;&#x6848;&#x540D;&#x7A31;">&#x78C1;&#x789F;&#x6A94;&#x6848;&#x540D;&#x7A31;</h3>
+<p>&#x985E;&#x578B;: 1. &#x5BE6;&#x9AD4;&#x78C1;&#x789F; 2.&#x865B;&#x64EC;&#x78C1;&#x789F;</p>
+<ul>
+<li>&#x5BE6;&#x9AD4;&#x78C1;&#x789F;&#x7684;&#x78C1;&#x789F;&#x6A94;&#x540D;: /dev/sd[a-p][1-128]</li>
+<li>&#x865B;&#x64EC;&#x78C1;&#x789F;&#x7684;&#x78C1;&#x789F;&#x6A94;&#x540D;: /dev/vd[a-d][1-128]</li>
+</ul>
+<blockquote>
+<p>&#x5EF6;&#x4F38;&#x88DC;&#x5145;&#xFF1A; <a href="">&#x5BE6;&#x9AD4;&#x78C1;&#x789F;&#x8207;&#x865B;&#x64EC;&#x78C1;&#x789F;&#x5DEE;&#x7570;</a></p>
+</blockquote>
+<h4 id="&#x78C1;&#x789F;&#x6A94;&#x6848;&#x547D;&#x540D;&#x7BC4;&#x4F8B;">&#x78C1;&#x789F;&#x6A94;&#x6848;&#x547D;&#x540D;&#x7BC4;&#x4F8B;</h4>
+<p>&#x7B2C;&#x4E00;&#x9846;&#x78C1;&#x789F;&#x6A94;&#x540D;&#x70BA; /dev/sda</p>
+<h4 id="&#x78C1;&#x789F;&#x6A94;&#x6848;--&#x5206;&#x5272;&#x69FD;">&#x78C1;&#x789F;&#x6A94;&#x6848; &gt; &#x5206;&#x5272;&#x69FD;</h4>
+<p>&#x5206;&#x5272;&#x69FD;&#x7684;&#x6A94;&#x540D;&#x82E5;&#x4EE5;&#x7B2C;&#x4E00;&#x9846;&#x78C1;&#x789F;&#x70BA;&#x4F8B;&#xFF0C;&#x5247;&#x70BA; /dev/sda[1-128] </p>
+<pre><code>&#x4F7F;&#x7528;&#x7684;&#x662F; LVM &#x6642;&#xFF0C;&#x6A94;&#x540D;&#x5247;&#x70BA; /dev/VGNAME/LVNAME &#x7B49;&#x683C;&#x5F0F;
+&#x6703;&#x65BC; [&#x8EDF;&#x9AD4;&#x78C1;&#x789F;&#x9663;&#x5217;&#x8207; LVM](http://)&#x4E2D;&#x4ECB;&#x7D39;  (ch14)
+</code></pre><h3 id="&#x5C0F;&#x7D50;">&#x5C0F;&#x7D50;</h3>
+<p>&#x50B3;&#x7D71;&#x56E0;&#x70BA;&#x78C1;&#x789F;&#x7A7A;&#x9593;&#x8F03;&#x5C0F;&#xFF0C;&#x4EE5;&#x78C1;&#x67F1;&#x70BA;&#x6700;&#x5C0F;&#x5206;&#x5272;&#x55AE;&#x4F4D;&#xFF0C;&#x4F46;&#x56E0;&#x70BA;&#x5BB9;&#x91CF;&#x8D8A;&#x4F86;&#x8D8A;&#x5927;&#xFF0C;&#x6539;&#x4EE5;&#x78C1;&#x5340;&#x70BA;&#x6700;&#x5C0F;&#x55AE;&#x4F4D;&#xFF0C;&#x9019;&#x6A23;&#x624D;&#x53EF;&#x4EE5;&#x5207;&#x5F97;&#x8D8A;&#x5C0F;&#xFF0C;
+&#x5229;&#x7528;&#x7387;&#x8D8A;&#x9AD8;&#xFF01;</p>
+<p>&#x4E14;&#x73FE;&#x5728;&#x5F97;&#x900F;&#x904E;GPT&#x5206;&#x5272;&#x8868;&#x624D;&#x80FD;&#x5920;&#x4F7F;&#x7528;&#x5168;&#x90E8;&#x7684;&#x5BB9;&#x91CF;&#xFF0C;&#x6545;&#x9CE5;&#x54E5;&#x66F8;&#x4E2D;&#x5EFA;&#x8B70;&#xFF0C;&#x4F7F;&#x7528;GPT&#x4F5C;&#x70BA;CentOS&#x7684;&#x78C1;&#x789F;&#x5206;&#x5272;&#xFF0C;&#x4E4B;&#x5F8C;&#x7684;&#x4ECB;&#x7D39;&#x4E5F;&#x90FD;&#x4EE5;GPT&#x70BA;&#x4E3B;</p>
+<h2 id="7-1-2-&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7279;&#x6027;">7-1-2 &#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7279;&#x6027;</h2>
+<h3 id="&#x683C;&#x5F0F;&#x5316;">&#x683C;&#x5F0F;&#x5316;</h3>
+<ul>
+<li>&#x78C1;&#x789F;&#x5206;&#x5272;&#x5B8C;&#x7562;&#x5F8C;&#x9084;&#x9700;&#x8981;&#x9032;&#x884C;&#x683C;&#x5F0F;&#x5316;(format)&#xFF0C;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x624D;&#x80FD;&#x5920;&#x4F7F;&#x7528;</li>
+</ul>
+<pre><code>Q: Why &#x683C;&#x5F0F;&#x5316;&#xFF1F;
+
+A: &#x56E0;&#x70BA;&#x6BCF;&#x7A2E;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x6240;&#x8A2D;&#x5B9A;&#x7684;&#x6A94;&#x6848;&#x5C6C;&#x6027;/&#x6B0A;&#x9650;&#x4E26;&#x4E0D;&#x76F8;&#x540C;&#xFF0C; &#x70BA;&#x4E86;&#x5B58;&#x653E;&#x9019;&#x4E9B;&#x6A94;&#x6848;&#x6240;&#x9700;&#x7684;&#x8CC7;&#x6599;&#xFF0C;&#x56E0;&#x6B64;&#x5C31;&#x9700;&#x8981;&#x5C07;&#x5206;&#x5272;&#x69FD;&#x9032;&#x884C;&#x683C;&#x5F0F;&#x5316;&#xFF0C;&#x4EE5;&#x6210;&#x70BA;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x80FD;&#x5920;&#x5229;&#x7528;&#x7684;&#x300E;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x683C;&#x5F0F;(filesystem)&#x300F;
+
+&#x4F8B;&#x5982; windows 98&#x4F7F;&#x7528;FAT&#xFF0C;windows 2000&#x4F7F;&#x7528;NTFS&#xFF0C;&#x7136;&#x800C;Linux&#x4F7F;&#x7528;Ext2(Linux second extended file system, ext2fs)&#xFF0C;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x5C31;&#x50CF;&#x662F;&#x4ED6;&#x5011;&#x5404;&#x81EA;&#x7684;&#x6E9D;&#x901A;&#x8A9E;&#x8A00;&#xFF0C;&#x4E0D;&#x540C;&#x8A9E;&#x8A00;&#x5C31;&#x6703;&#x4E0D;&#x8A8D;&#x5F97;
+</code></pre><ul>
+<li>&#x4E00;&#x500B;&#x5206;&#x5272;&#x69FD;&#x5C31;&#x662F;&#x53EA;&#x80FD;&#x5920;&#x88AB;&#x683C;&#x5F0F;&#x5316;&#x6210;&#x70BA;&#x4E00;&#x500B;&#x6A94;&#x6848;&#x7CFB;&#x7D71;</li>
+</ul>
+<blockquote>
+<p>(&#x820A;&#x89C0;&#x5FF5;) &#x6240;&#x4EE5;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x8AAA;&#x4E00;&#x500B; filesystem &#x5C31;&#x662F;&#x4E00;&#x500B; partition&#x3002;</p>
+</blockquote>
+<pre><code>&#x900F;&#x904E;LVM&#x8207;&#x8EDF;&#x9AD4;&#x78C1;&#x789F;&#x9663;&#x5217;(software raid)&#xFF0C; &#x9019;&#x4E9B;&#x6280;&#x8853;&#x53EF;&#x4EE5;&#x5C07;&#x4E00;&#x500B;&#x5206;&#x5272;&#x69FD;&#x683C;&#x5F0F;&#x5316;&#x70BA;&#x591A;&#x500B;&#x6A94;&#x6848;&#x7CFB;&#x7D71;
+&#x4E5F;&#x80FD;&#x5920;&#x5C07;&#x591A;&#x500B;&#x5206;&#x5272;&#x69FD;&#x5408;&#x6210;&#x4E00;&#x500B;&#x6A94;&#x6848;&#x7CFB;&#x7D71;(LVM, RAID)&#xFF01;
+</code></pre><blockquote>
+<p>(&#x65B0;&#x89C0;&#x5FF5;) &#x6545;&#x73FE;&#x5728;&#x7A31;&#x547C;&#x4E00;&#x500B;&#x53EF;&#x88AB;&#x639B;&#x8F09;&#x7684;&#x8CC7;&#x6599;&#x70BA;&#x4E00;&#x500B;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x500B;&#x5206;&#x5272;&#x69FD;&#x5594;&#xFF01;</p>
+</blockquote>
+<h3 id="&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x5167;&#x5BB9;&#x653E;&#x7F6E;">&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x5167;&#x5BB9;&#x653E;&#x7F6E;</h3>
+<p>&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x901A;&#x5E38;&#x6703;&#x5C07;&#x9019;&#x5169;&#x90E8;&#x4EFD;&#x7684;&#x8CC7;&#x6599;&#x5206;&#x5225;&#x5B58;&#x653E;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x5340;&#x584A;</p>
+<ol>
+<li>&#x6B0A;&#x9650;&#x8207;&#x5C6C;&#x6027;&#x653E;&#x7F6E;&#x5230; inode &#x4E2D; </li>
+<li>&#x5BE6;&#x969B;&#x8CC7;&#x6599;&#x5247;&#x653E;&#x7F6E;&#x5230; data block &#x5340;&#x584A;</li>
+</ol>
+<blockquote>
+<p>&#x6A94;&#x6848;&#x6B0A;&#x9650;(read,write,execute (rwx))&#x8207;&#x6A94;&#x6848;&#x5C6C;&#x6027;(&#x64C1;&#x6709;&#x8005;&#x3001;&#x7FA4;&#x7D44;&#x3001;&#x6642;&#x9593;&#x53C3;&#x6578;&#x7B49;)</p>
+</blockquote>
+<pre><code>&#x8D85;&#x7D1A;&#x5340;&#x584A; (superblock) &#x6703;&#x8A18;&#x9304;&#x6574;&#x500B;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x6574;&#x9AD4;&#x8CC7;&#x8A0A;&#xFF0C;&#x5305;&#x62EC; inode &#x8207; block &#x7684;&#x7E3D;&#x91CF;&#x3001;&#x4F7F;&#x7528;&#x91CF;&#x3001;&#x5269;&#x9918;&#x91CF;&#x7B49;&#x3002;
+</code></pre><h3 id="&#x6709;&#x7DE8;&#x865F;&#x7684;inode&#x8207;block">&#x6709;&#x7DE8;&#x865F;&#x7684;inode&#x8207;block</h3>
+<ul>
+<li>superblock&#xFF1A;&#x8A18;&#x9304;&#x6B64; filesystem &#x7684;&#x6574;&#x9AD4;&#x8CC7;&#x8A0A;&#xFF0C;&#x5305;&#x62EC;inode/block&#x7684;&#x7E3D;&#x91CF;&#x3001;&#x4F7F;&#x7528;&#x91CF;&#x3001;&#x5269;&#x9918;&#x91CF;&#xFF0C; &#x4EE5;&#x53CA;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x683C;&#x5F0F;&#x8207;&#x76F8;&#x95DC;&#x8CC7;&#x8A0A;&#x7B49;&#xFF1B;</li>
+<li>inode&#xFF1A;&#x8A18;&#x9304;&#x6A94;&#x6848;&#x7684;&#x5C6C;&#x6027;&#xFF0C;&#x4E00;&#x500B;&#x6A94;&#x6848;&#x4F54;&#x7528;&#x4E00;&#x500B;inode&#xFF0C;&#x540C;&#x6642;&#x8A18;&#x9304;&#x6B64;&#x6A94;&#x6848;&#x7684;&#x8CC7;&#x6599;&#x6240;&#x5728;&#x7684; block &#x865F;&#x78BC;&#xFF1B;</li>
+<li>block&#xFF1A;&#x5BE6;&#x969B;&#x8A18;&#x9304;&#x6A94;&#x6848;&#x7684;&#x5167;&#x5BB9;&#xFF0C;&#x82E5;&#x6A94;&#x6848;&#x592A;&#x5927;&#x6642;&#xFF0C;&#x6703;&#x4F54;&#x7528;&#x591A;&#x500B; block &#x3002;</li>
+</ul>
+<blockquote>
+<p>&#x627E;&#x6A94;&#x6848;&#x6487;&#x6B65; -&gt; &#x5148;&#x627E; inode(&#x7D22;&#x5F15;) -&gt;&#x518D;&#x627E; block (&#x5167;&#x5BB9;)</p>
+</blockquote>
+<h3 id="&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x985E;&#x578B;">&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x985E;&#x578B;</h3>
+<ol>
+<li>&#x7D22;&#x5F15;&#x5F0F;&#x6A94;&#x6848;&#x7CFB;&#x7D71;(indexed allocation)</li>
+</ol>
+<p>&#x5047;&#x8A2D;indoe 4&#x865F;(&#x7070;&#x8272;&#x65B9;&#x683C;)&#xFF0C;&#x7D00;&#x9304;&#x6A94;&#x6848;&#x8CC7;&#x6599;&#x653E;&#x7F6E;&#x9EDE;&#x70BA;2,7,13,15&#xFF0C;OS&#x5C31;&#x80FD;&#x6839;&#x64DA;inode&#x8207;&#x5C0D;&#x61C9;&#x7684;block&#x4F86;&#x6392;&#x5217;&#x78C1;&#x789F;&#x7684;&#x8B80;&#x53D6;&#x9806;&#x5E8F;</p>
+<p><img src="https://i.imgur.com/P4dpsnl.png" alt=""></p>
+<p>&#x5716;7-1-2.1 &#x7D22;&#x5F15;&#x5F0F;&#x7D50;&#x69CB; (<a href="http://linux.vbird.org/linux_basic/0230filesystem.php#harddisk-physical" target="_blank">&#x4F86;&#x6E90;: &#x9CE5;&#x54E5;Linux&#x79C1;&#x623F;&#x83DC;</a>)</p>
+<ol>
+<li>FAT (File Allocation Table)</li>
+</ol>
+<p>&#x6163;&#x7528;&#x7684;&#x96A8;&#x8EAB;&#x789F;(&#x5FEB;&#x9583;&#x8A18;&#x61B6;&#x9AD4;)&#x5C31;&#x662F;FAT</p>
+<p>&#x6C92;&#x6709;inode&#x7684;&#x5B58;&#x5728;&#xFF0C;&#x7121;&#x6CD5;&#x76F4;&#x63A5;&#x628A;&#x6240;&#x6709;block&#x4E00;&#x53E3;&#x6C23;&#x8B80;&#x51FA;&#x4F86;</p>
+<p>&#x6BCF;&#x500B;block&#x865F;&#x78BC;&#x90FD;&#x7D00;&#x9304;&#x5728;&#x524D;&#x4E00;&#x500B;block&#x5167;</p>
+<p><img src="https://i.imgur.com/xvXOu1u.png" alt=""></p>
+<p>&#x5716;7-1-2.2 FAT&#x7D50;&#x69CB; (<a href="http://linux.vbird.org/linux_basic/0230filesystem.php#harddisk-physical" target="_blank">&#x4F86;&#x6E90;: &#x9CE5;&#x54E5;Linux&#x79C1;&#x623F;&#x83DC;</a>)</p>
+<blockquote>
+<p>&#x9700;&#x8981;&#x4E00;&#x500B;&#x4E00;&#x500B;&#x63A5;&#x8457;&#x8B80;&#x53D6;&#x51FA;&#x4F86;&#xFF01;</p>
+</blockquote>
+<h4 id="&#x78C1;&#x789F;&#x91CD;&#x7D44;">&#x78C1;&#x789F;&#x91CD;&#x7D44;</h4>
+<p>&#x5BEB;&#x5165;&#x7684; block &#x592A;&#x904E;&#x65BC;&#x96E2;&#x6563;&#x4E86;&#x5C0E;&#x81F4;&#x8B80;&#x53D6;&#x6548;&#x80FD;&#x592A;&#x5DEE;&#xFF0C;&#x900F;&#x904E;&#x78C1;&#x789F;&#x91CD;&#x7D44;&#x5C07;&#x540C;&#x4E00;&#x500B;&#x6A94;&#x6848;&#x6240;&#x5C6C;&#x7684;blocks&#x5F59;&#x6574;&#x518D;&#x4E00;&#x8D77;&#x3002;</p>
+<blockquote>
+<p>FAT&#x7CFB;&#x7D71;&#x6A94;&#x6848;&#x5E38;&#x5E38;&#x9700;&#x8981;&#x91CD;&#x7D44;&#xFF01;&#xFF0C;&#x5C07;&#x76F8;&#x95DC;&#x9023;&#x7684;block&#x653E;&#x5728;&#x9023;&#x7E8C;&#x7684;&#x78C1;&#x5340;&#xFF0C;&#x5982;&#x6B64;&#x4E00;&#x4F86;&#x6A5F;&#x68B0;&#x624B;&#x81C2;&#x8B80;&#x53D6;&#x6642;&#x4E0D;&#x7528;&#x7E5E;&#x4E00;&#x5927;&#x5708;&#xFF0C;&#x63D0;&#x9AD8;&#x8B80;&#x53D6;&#x901F;&#x5EA6;</p>
+</blockquote>
+<h2 id="7-1-3-linux-&#x7684;-ext2-&#x6A94;&#x6848;&#x7CFB;&#x7D71;inode">7-1-3 Linux &#x7684; EXT2 &#x6A94;&#x6848;&#x7CFB;&#x7D71;(inode)</h2>
+<p>&#x6A19;&#x6E96;&#x7684; Linux &#x6A94;&#x6848;&#x7CFB;&#x7D71; Ext2(&#x5EF6;&#x4F38;&#x6A94;&#x6848;&#x7CFB;&#x7D71;) &#x4F7F;&#x7528;inode&#x70BA;&#x57FA;&#x790E;&#x7684;&#x6A94;&#x6848;&#x7CFB;&#x7D71;</p>
+<h3 id="&#x653E;&#x7F6E;&#x7B56;&#x7565;">&#x653E;&#x7F6E;&#x7B56;&#x7565;</h3>
+<p>&#x4EE5;&#x5340;&#x5206;&#x591A;&#x500B;&#x5340;&#x584A;&#x7FA4;&#x7D44; (block group)&#x70BA;&#x4E3B;&#xFF0C;&#x6BCF;&#x500B;&#x5340;&#x584A;&#x7FA4;&#x7D44;&#x90FD;&#x6709;&#x7368;&#x7ACB;&#x7684; inode/block/superblock &#x7CFB;&#x7D71;</p>
+<p><img src="https://i.imgur.com/74RFOfE.png" alt=""></p>
+<p>&#x5716;7-3-1 &#x5340;&#x584A;&#x7FA4;&#x7D44;&#x793A;&#x610F;&#x5716; (<a href="http://linux.vbird.org/linux_basic/0230filesystem.php#harddisk-physical" target="_blank">&#x4F86;&#x6E90;: &#x9CE5;&#x54E5;Linux&#x79C1;&#x623F;&#x83DC;</a>)</p>
+<pre><code>Q: &#x70BA;&#x4EC0;&#x9EBC;&#x4E0D;&#x662F;&#x90FD;&#x653E;&#x5728;&#x4E00;&#x8D77;&#xFF1F;&#xFF0C;&#x90A3;&#x4E0D;&#x5C31;&#x8B80;&#x53D6;&#x6642;&#x6703;&#x6BD4;&#x8F03;&#x5FEB;&#x55CE;
+
+A: &#x56E0;&#x70BA;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x9AD8;&#x9054;&#x6578;&#x767E;GB&#x6642;&#xFF0C; &#x90A3;&#x9EBC;&#x5C07;&#x6240;&#x6709;&#x7684; inode &#x8207; block &#x901A;&#x901A;&#x653E;&#x7F6E;&#x5728;&#x4E00;&#x8D77;&#x5C0E;&#x81F4;&#x6578;&#x91CF;&#x592A;&#x9F90;&#x5927;&#xFF0C;&#x4E0D;&#x5BB9;&#x6613;&#x7BA1;&#x7406;&#x3002;&#x60F3;&#x50CF;&#x4E00;&#x4E0B;&#x5206;&#x7FA4;&#x7684;&#x8A71;
+
+* &#x90FD;&#x653E;&#x5728;&#x540C;&#x4E00;&#x500B;block group&#xFF0C;&#x6703;&#x6709;&#x8CC7;&#x5B89;&#x6216;&#x662F;&#x8CC7;&#x6599;&#x6BC0;&#x640D;&#x6C92;&#x8FA6;&#x6CD5;&#x900F;&#x904E;superblock&#x53D6;&#x5F97;&#x8CC7;&#x8A0A;
+* &#x624D;&#x80FD;&#x5920;&#x591A;&#x982D;&#x4E26;&#x884C;&#x8B80;&#x53D6;
+</code></pre><h3 id="&#x958B;&#x6A5F;&#x78C1;&#x5340;">&#x958B;&#x6A5F;&#x78C1;&#x5340;</h3>
+<p>&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x6700;&#x524D;&#x9762;&#x6709;&#x4E00;&#x500B;&#x958B;&#x6A5F;&#x78C1;&#x5340;(boot sector)&#xFF0C;&#x9019;&#x500B;&#x958B;&#x6A5F;&#x78C1;&#x5340;&#x53EF;&#x4EE5;&#x5B89;&#x88DD;&#x958B;&#x6A5F;&#x7BA1;&#x7406;&#x7A0B;&#x5F0F;</p>
+<p>&#x53EF;&#x5C07;&#x4E0D;&#x540C;&#x7684;&#x958B;&#x6A5F;&#x7BA1;&#x7406;&#x7A0B;&#x5F0F;&#x5B89;&#x88DD;&#x5230;&#x500B;&#x5225;&#x7684;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x6700;&#x524D;&#x7AEF;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x8986;&#x84CB;&#x6574;&#x9846;&#x78C1;&#x789F;&#x552F;&#x4E00;&#x7684;MBR
+&#x5BE6;&#x73FE;&#x88FD;&#x4F5C;&#x51FA;&#x591A;&#x91CD;&#x958B;&#x6A5F;&#x7684;&#x74B0;&#x5883;&#x3002;</p>
+<pre><code>Q: &#x524D;&#x9762;&#x63D0;&#x5230;&#x7684;MBR &#x5206;&#x5272;&#x8868;  (Master Boot Record&#x4E3B;&#x958B;&#x6A5F;&#x8A18;&#x9304;)&#xFF0C;&#x8DDF;&#x9019;&#x908A;&#x7684;&#x958B;&#x6A5F;&#x7BA1;&#x7406;&#x7A0B;&#x5F0F;&#x6709;&#x4EC0;&#x9EBC;&#x5DEE;&#x5225;&#xFF1F;
+
+A: MBR&#x626E;&#x6F14;&#x4E00;&#x958B;&#x59CB;&#x958B;&#x6A5F;&#x6642;&#x7684;&#x5F15;&#x6E21;&#x4EBA;&#xFF0C;&#x544A;&#x8A34;&#x4E3B;&#x6A5F;&#x76EE;&#x524D;&#x7684;&#x6A94;&#x6848;&#x5206;&#x5272;&#x8868;&#x7D50;&#x69CB;&#x9577;&#x600E;&#x6A23;&#xFF0C;&#x77E5;&#x9053;&#x5F8C;&#x624D;&#x66C9;&#x5F97;&#x6709;&#x54EA;&#x4E9B;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x7684;&#x958B;&#x6A5F;&#x7A0B;&#x5E8F;&#x3002;
+
+MBR&#x8A73;&#x60C5;&#x53EF;&#x53C3;&#x8003;: [Wiki-&#x4E3B;&#x958B;&#x6A5F;&#x7D00;&#x9304;MBR
+](https://zh.wikipedia.org/wiki/%E4%B8%BB%E5%BC%95%E5%AF%BC%E8%AE%B0%E5%BD%95)
+</code></pre><h3 id="&#x5340;&#x584A;&#x7FA4;&#x7D44;block-group">&#x5340;&#x584A;&#x7FA4;&#x7D44;(block group)</h3>
+<p>&#x4E3B;&#x8981;&#x5305;&#x542B;&#x4EE5;&#x4E0B;6&#x500B;&#x8CC7;&#x8A0A;</p>
+<ol>
+<li>data block (&#x8CC7;&#x6599;&#x5340;&#x584A;)<ul>
+<li>&#x653E;&#x7F6E;&#x6A94;&#x6848;&#x5167;&#x5BB9;&#x8CC7;&#x6599;&#x5730;&#x65B9;</li>
+</ul>
+</li>
+<li>inode table (inode &#x8868;&#x683C;)<ul>
+<li>&#x7D00;&#x9304;&#x6A94;&#x6848;&#x8CC7;&#x6599;&#x7684;&#x5167;&#x5BB9;</li>
+</ul>
+</li>
+<li>Superblock (&#x8D85;&#x7D1A;&#x5340;&#x584A;)<ul>
+<li>&#x7D00;&#x9304;&#x6574;&#x500B;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x8CC7;&#x8A0A;</li>
+</ul>
+</li>
+<li>Filesystem Description (&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x63CF;&#x8FF0;&#x8AAA;&#x660E;)<ul>
+<li>&#x63CF;&#x8FF0;&#x6BCF;&#x500B; block group &#x7684;&#x958B;&#x59CB;&#x8207;&#x7D50;&#x675F;&#x7684; block &#x865F;&#x78BC;</li>
+</ul>
+</li>
+<li>block bitmap (&#x5340;&#x584A;&#x5C0D;&#x7167;&#x8868;)<ul>
+<li>&#x7D00;&#x9304;&#x54EA;&#x4E9B;&#x5340;&#x584A;&#x672A;&#x88AB;&#x4F7F;&#x7528;&#x6216;&#x5DF2;&#x88AB;&#x4F7F;&#x7528;</li>
+</ul>
+</li>
+<li>inode bitmap (inode &#x5C0D;&#x7167;&#x8868;)<ul>
+<li>&#x8A18;&#x9304;&#x4F7F;&#x7528;&#x8207;&#x672A;&#x4F7F;&#x7528;&#x7684;inode&#x865F;&#x78BC;</li>
+</ul>
+</li>
+</ol>
+<p>&#x8A73;&#x60C5;&#x53EF;&#x898B; Sec.7-1-3 &#x5340;&#x584A;&#x7FA4;&#x7D44;(block group) &#x8AAA;&#x660E;</p>
+<h2 id="7-1-4-&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x8207;&#x76EE;&#x9304;&#x6A39;&#x7684;&#x95DC;&#x4FC2;">7-1-4 &#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x8207;&#x76EE;&#x9304;&#x6A39;&#x7684;&#x95DC;&#x4FC2;</h2>
+<p>&#x63CF;&#x8FF0;&#x76EE;&#x9304;&#x8207;&#x6A94;&#x6848;&#x5728;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7576;&#x4E2D;&#x662F;&#x5982;&#x4F55;&#x8A18;&#x9304;&#x8CC7;&#x6599;</p>
+<h3 id="&#x76EE;&#x9304;">&#x76EE;&#x9304;</h3>
+<p>&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x6703;&#x5206;&#x914D;&#x4E00;&#x500B; inode &#x8207;&#x81F3;&#x5C11;&#x4E00;&#x584A; block &#x7D66;&#x8A72;&#x76EE;&#x9304;&#x3002;</p>
+<ul>
+<li>inode &#x8A18;&#x9304;&#x8A72;&#x76EE;&#x9304;&#x7684;&#x76F8;&#x95DC;&#x6B0A;&#x9650;&#x8207;&#x5C6C;&#x6027;&#xFF0C;&#x4E26;&#x53EF;&#x8A18;&#x9304;&#x5206;&#x914D;&#x5230;&#x7684;&#x90A3;&#x584A; block &#x865F;&#x78BC;</li>
+<li>block &#x5247;&#x662F;&#x8A18;&#x9304;&#x5728;&#x9019;&#x500B;&#x76EE;&#x9304;&#x4E0B;&#x7684;&#x6A94;&#x540D;&#x8207;&#x8A72;&#x6A94;&#x540D;&#x4F54;&#x7528;&#x7684; inode &#x865F;&#x78BC;&#x8CC7;&#x6599;&#x3002;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Inode Number</th>
+<th>&#x6A94;&#x540D; 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>54735697</td>
+<td>anaconda-ks.cfg</td>
+</tr>
+<tr>
+<td>53745858</td>
+<td>initial-setup-ks.cfg</td>
+</tr>
+</tbody>
+</table>
+<p>&#x53EF;&#x900F;&#x904E; <code>ls -i</code> &#x9078;&#x9805;&#x5F97;&#x77E5;&#x6A94;&#x6848;&#x6240;&#x4F54;&#x7528;&#x7684;inode&#x865F;&#x78BC;</p>
+<pre><code>[root@study ~]# ls -li
+total 8
+53735697 -rw-------. 1 root root 1816 May  4 17:57 anaconda-ks.cfg
+53745858 -rw-r--r--. 1 root root 1864 May  4 18:01 initial-setup-ks.cfg
+</code></pre><p>&#x82E5;&#x4F7F;&#x7528; <code>ll /</code>&#xFF0C;&#x51FA;&#x73FE;&#x76EE;&#x9304;&#x70BA;1024&#x500D;&#x6578;&#xFF0C;&#x56E0;&#x70BA;&#x6BCF;&#x500B;block&#x5927;&#x5C0F;&#x70BA;1K&#x3001;2K&#x3001;4K </p>
+<pre><code>
+[root@study ~]# ll -d / /boot /usr/sbin /proc /sys
+dr-xr-xr-x.  17 root root  4096 May  4 17:56 /         &lt;== 1 &#x500B; 4K block
+dr-xr-xr-x.   4 root root  4096 May  4 17:59 /boot     &lt;== 1 &#x500B; 4K block
+dr-xr-xr-x. 155 root root     0 Jun 15 15:43 /proc     &lt;== &#x9019;&#x5169;&#x500B;&#x70BA;&#x8A18;&#x61B6;&#x9AD4;&#x5167;&#x8CC7;&#x6599;&#xFF0C;&#x4E0D;&#x4F54;&#x78C1;&#x789F;&#x5BB9;&#x91CF;
+dr-xr-xr-x.  13 root root     0 Jun 15 23:43 /sys
+dr-xr-xr-x.   2 root root 16384 May  4 17:55 /usr/sbin &lt;== 4 &#x500B; 4K block
+</code></pre><blockquote>
+<p>/proc: &#x8A18;&#x9304;Linux&#x7CFB;&#x7D71;&#x7A0B;&#x5E8F;(process)&#x57F7;&#x884C;&#x72C0;&#x6CC1;&#xFF0C;&#x5132;&#x5B58;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x5167;&#xFF0C;&#x4E0D;&#x4F54;&#x78C1;&#x789F;&#x5BB9;&#x91CF;&#xFF0C;&#x8017;&#x7528;&#x7684;block&#x70BA;0</p>
+</blockquote>
+<h3 id="&#x6A94;&#x6848;">&#x6A94;&#x6848;</h3>
+<p>Linux &#x4E0B;&#x7684; ext2 &#x5EFA;&#x7ACB;&#x4E00;&#x500B;&#x4E00;&#x822C;&#x6A94;&#x6848;&#x6642;&#xFF0C;ext2 &#x6703;&#x5206;&#x914D;&#x4E00;&#x500B; inode &#x8207;&#x76F8;&#x5C0D;&#x65BC;&#x8A72;&#x6A94;&#x6848;&#x5927;&#x5C0F;&#x7684; block &#x6578;&#x91CF;&#x7D66;&#x8A72;&#x6A94;&#x6848;&#x3002;</p>
+<pre><code>&#x5047;&#x8A2D;&#x4E00;&#x500B; block &#x70BA; 4 Kbytes&#xFF0C;&#x800C;&#x5EFA;&#x7ACB;&#x4E00;&#x500B; 100 KBytes &#x7684;&#x6A94;&#x6848;&#xFF0C;
+&#x90A3;&#x9EBC; linux &#x5C07;&#x5206;&#x914D;&#x4E00;&#x500B; inode &#x8207; 25 &#x500B; block &#x4F86;&#x5132;&#x5B58;&#x8A72;&#x6A94;&#x6848;&#xFF01; 
+
+&#x4F46;&#x540C;&#x6642;&#x8ACB;&#x6CE8;&#x610F;&#xFF0C;&#x7531;&#x65BC; inode &#x50C5;&#x6709; 12 &#x500B;&#x76F4;&#x63A5;&#x6307;&#x5411;&#xFF0C;&#x56E0;&#x6B64;&#x9084;&#x8981;&#x591A;&#x4E00;&#x500B; block &#x4F86;&#x4F5C;&#x70BA;&#x5340;&#x584A;&#x865F;&#x78BC;&#x7684;&#x8A18;&#x9304;&#x5594;&#xFF01;
+</code></pre><h3 id="&#x76EE;&#x9304;&#x6A39;&#x8B80;&#x53D6;">&#x76EE;&#x9304;&#x6A39;&#x8B80;&#x53D6;</h3>
+<p>&#x6A94;&#x540D;&#x7684;&#x7D00;&#x9304;&#x662F;&#x5728;&#x7D00;&#x9304;&#x76EE;&#x9304;&#x7684;block!  &#x4E0D;&#x5728;inode&#x5167;&#x3002;</p>
+<blockquote>
+<p>&quot;&#x65B0;&#x589E;/&#x522A;&#x9664;/&#x66F4;&#x540D;&#x6A94;&#x540D;&#x8207;&#x76EE;&#x9304;&#x7684;w&#x6B0A;&#x9650;&quot; &#x7684;&#x539F;&#x56E0;&#x662F;&#x9019;&#x9EBC;&#x4F86;&#x7684;&#xFF0C;&#x8981;&#x8B80;&#x53D6;&#x76EE;&#x9304;&#x5167;&#x7684;&#x6A94;&#x6848;&#x540D;&#x7A31;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x8B80;&#x53D6;&#x5B58;&#x8457;&#x76EE;&#x9304;&#x7684;block</p>
+</blockquote>
+<p>&#x7BC4;&#x4F8B;&#xFF1A;&#x8B80;&#x53D6; /etc/passwd&#xFF0C;&#x5176;&#x7D50;&#x679C;&#x8207;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;</p>
+<pre><code>[root@study ~]# ll -di / /etc /etc/passwd
+     128 dr-xr-xr-x.  17 root root 4096 May  4 17:56 /
+33595521 drwxr-xr-x. 131 root root 8192 Jun 17 00:20 /etc
+36628004 -rw-r--r--.   1 root root 2092 Jun 17 00:20 /etc/passwd
+</code></pre><ol>
+<li><p>/ &#x7684; inode&#xFF1A;
+&#x900F;&#x904E;&#x639B;&#x8F09;&#x9EDE;&#x7684;&#x8CC7;&#x8A0A;&#x627E;&#x5230; inode &#x865F;&#x78BC;&#x70BA; 128 &#x7684;&#x6839;&#x76EE;&#x9304; inode&#xFF0C;&#x4E14; inode &#x898F;&#x7BC4;&#x7684;&#x6B0A;&#x9650;&#x8B93;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x8B80;&#x53D6;&#x8A72; block &#x7684;&#x5167;&#x5BB9;(&#x6709; r &#x8207; x) &#xFF1B;</p>
+</li>
+<li><p>/ &#x7684; block&#xFF1A;
+&#x7D93;&#x904E;&#x4E0A;&#x500B;&#x6B65;&#x9A5F;&#x53D6;&#x5F97; block &#x7684;&#x865F;&#x78BC;&#xFF0C;&#x4E26;&#x627E;&#x5230;&#x8A72;&#x5167;&#x5BB9;&#x6709; etc/ &#x76EE;&#x9304;&#x7684; inode &#x865F;&#x78BC; (33595521)&#xFF1B;</p>
+</li>
+<li><p>etc/ &#x7684; inode&#xFF1A;
+&#x8B80;&#x53D6; 33595521 &#x865F; inode &#x5F97;&#x77E5; dmtsai &#x5177;&#x6709; r &#x8207; x &#x7684;&#x6B0A;&#x9650;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x8B80;&#x53D6; etc/ &#x7684; block &#x5167;&#x5BB9;&#xFF1B;</p>
+</li>
+<li><p>etc/ &#x7684; block&#xFF1A;
+&#x7D93;&#x904E;&#x4E0A;&#x500B;&#x6B65;&#x9A5F;&#x53D6;&#x5F97; block &#x865F;&#x78BC;&#xFF0C;&#x4E26;&#x627E;&#x5230;&#x8A72;&#x5167;&#x5BB9;&#x6709; passwd &#x6A94;&#x6848;&#x7684; inode &#x865F;&#x78BC; (36628004)&#xFF1B;</p>
+</li>
+<li><p>passwd &#x7684; inode&#xFF1A;
+&#x8B80;&#x53D6; 36628004 &#x865F; inode &#x5F97;&#x77E5; dmtsai &#x5177;&#x6709; r &#x7684;&#x6B0A;&#x9650;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x8B80;&#x53D6; passwd &#x7684; block &#x5167;&#x5BB9;&#xFF1B;</p>
+</li>
+<li><p>passwd &#x7684; block&#xFF1A;
+&#x6700;&#x5F8C;&#x5C07;&#x8A72; block &#x5167;&#x5BB9;&#x7684;&#x8CC7;&#x6599;&#x8B80;&#x51FA;&#x4F86;&#x3002;</p>
+</li>
+</ol>
+<h3 id="&#x5C0F;&#x7D50;">&#x5C0F;&#x7D50;</h3>
+<p>&#x4E00;&#x500B;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x898F;&#x5283;&#x7684;&#x5F88;&#x5927;&#x6642;&#xFF0C;&#x4F8B;&#x5982; 100GB &#x9019;&#x9EBC;&#x5927;&#x6642;&#xFF0C; &#x7531;&#x65BC;&#x78C1;&#x789F;&#x4E0A;&#x9762;&#x7684;&#x8CC7;&#x6599;&#x7E3D;&#x662F;&#x4F86;&#x4F86;&#x53BB;&#x53BB;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x6574;&#x500B;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x4E0A;&#x9762;&#x7684;&#x6A94;&#x6848;&#x901A;&#x5E38;&#x7121;&#x6CD5;&#x9023;&#x7E8C;&#x5BEB;&#x5728;&#x4E00;&#x8D77;(block &#x865F;&#x78BC;&#x4E0D;&#x6703;&#x9023;&#x7E8C;&#x7684;&#x610F;&#x601D;)&#xFF0C; &#x800C;&#x662F;&#x586B;&#x5165;&#x5F0F;&#x7684;&#x5C07;&#x8CC7;&#x6599;&#x586B;&#x5165;&#x6C92;&#x6709;&#x88AB;&#x4F7F;&#x7528;&#x7684; block &#x7576;&#x4E2D;&#x3002;&#x5982;&#x679C;&#x6A94;&#x6848;&#x5BEB;&#x5165;&#x7684; block &#x771F;&#x7684;&#x5206;&#x7684;&#x5F88;&#x6563;&#xFF0C; &#x6B64;&#x6642;&#x5C31;&#x6703;&#x6709;&#x6240;&#x8B02;&#x7684;&#x6A94;&#x6848;&#x8CC7;&#x6599;&#x96E2;&#x6563;&#x7684;&#x554F;&#x984C;&#x767C;&#x751F;&#x4E86;&#x3002;</p>
+<p>partition &#x7684;&#x898F;&#x5283;&#x4E26;&#x4E0D;&#x662F;&#x8D8A;&#x5927;&#x8D8A;&#x597D;&#xFF0C; &#x800C;&#x662F;&#x771F;&#x7684;&#x8981;&#x91DD;&#x5C0D;&#x60A8;&#x7684;&#x4E3B;&#x6A5F;&#x7528;&#x9014;&#x4F86;&#x9032;&#x884C;&#x898F;&#x5283;</p>
+<h2 id="7-1-5-ext2ext3ext4-&#x6A94;&#x6848;&#x7684;&#x5B58;&#x53D6;&#x8207;&#x65E5;&#x8A8C;&#x5F0F;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x529F;&#x80FD;">7-1-5 EXT2/EXT3/EXT4 &#x6A94;&#x6848;&#x7684;&#x5B58;&#x53D6;&#x8207;&#x65E5;&#x8A8C;&#x5F0F;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x529F;&#x80FD;</h2>
+<p>&#x65B0;&#x5EFA;&#x4E00;&#x500B;&#x6A94;&#x6848;&#x76EE;&#x9304;&#x9700;&#x8981;&#x900F;&#x904E; block bitmap&#x8207;inode bitmap&#xFF0C;&#x884C;&#x70BA;&#x5982;&#x4E0B;</p>
+<ol>
+<li>&#x5148;&#x78BA;&#x5B9A;&#x4F7F;&#x7528;&#x8005;&#x5C0D;&#x65BC;&#x6B32;&#x65B0;&#x589E;&#x6A94;&#x6848;&#x7684;&#x76EE;&#x9304;&#x662F;&#x5426;&#x5177;&#x6709; w &#x8207; x &#x7684;&#x6B0A;&#x9650;&#xFF0C;&#x82E5;&#x6709;&#x7684;&#x8A71;&#x624D;&#x80FD;&#x65B0;&#x589E;&#xFF1B;</li>
+<li>&#x6839;&#x64DA; inode bitmap &#x627E;&#x5230;&#x6C92;&#x6709;&#x4F7F;&#x7528;&#x7684; inode &#x865F;&#x78BC;&#xFF0C;&#x4E26;&#x5C07;&#x65B0;&#x6A94;&#x6848;&#x7684;&#x6B0A;&#x9650;/&#x5C6C;&#x6027;&#x5BEB;&#x5165;&#xFF1B;</li>
+<li>&#x6839;&#x64DA; block bitmap &#x627E;&#x5230;&#x6C92;&#x6709;&#x4F7F;&#x7528;&#x4E2D;&#x7684; block &#x865F;&#x78BC;&#xFF0C;&#x4E26;&#x5C07;&#x5BE6;&#x969B;&#x7684;&#x8CC7;&#x6599;&#x5BEB;&#x5165; block &#x4E2D;&#xFF0C;&#x4E14;&#x66F4;&#x65B0; inode &#x7684; block &#x6307;&#x5411;&#x8CC7;&#x6599;&#xFF1B;</li>
+<li>&#x5C07;&#x525B;&#x525B;&#x5BEB;&#x5165;&#x7684; inode &#x8207; block &#x8CC7;&#x6599;&#x540C;&#x6B65;&#x66F4;&#x65B0; inode bitmap &#x8207; block bitmap&#xFF0C;&#x4E26;&#x66F4;&#x65B0; superblock &#x7684;&#x5167;&#x5BB9;&#x3002;</li>
+</ol>
+<p>&#x53E6;&#x5916; &#x8CC7;&#x6599;&#x5B58;&#x653E;&#x5340;&#x57DF; &#x70BA; inode table&#x8207;data block</p>
+<p>superblock&#x3001;inode bitmap&#x8207;block bitmap&#x7A31;&#x4F5C;metadata(&#x4E2D;&#x4ECB;&#x8CC7;&#x6599;)</p>
+<blockquote>
+<p>&#x56E0;&#x70BA;superblock, inode bitmap &#x53CA; block bitmap &#x7684;&#x8CC7;&#x6599;&#x662F;&#x7D93;&#x5E38;&#x8B8A;&#x52D5;&#x7684;&#xFF0C;&#x6BCF;&#x6B21;&#x65B0;&#x589E;&#x3001;&#x79FB;&#x9664;&#x3001;&#x7DE8;&#x8F2F;&#x6642;&#x90FD;&#x53EF;&#x80FD;&#x6703;&#x5F71;&#x97FF;&#x5230;&#x9019;&#x4E09;&#x500B;&#x90E8;&#x5206;&#x7684;&#x8CC7;&#x6599;</p>
+</blockquote>
+<pre><code>&#x8CC7;&#x6599;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x60C5;&#x6CC1;
+
+&#x6A94;&#x6848;&#x5728;&#x5BEB;&#x5165;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x6642;&#xFF0C;&#x56E0;&#x70BA;&#x4E0D;&#x77E5;&#x540D;&#x539F;&#x56E0;&#x5C0E;&#x81F4;&#x7CFB;&#x7D71;&#x4E2D;&#x65B7;(&#x4F8B;&#x5982;&#x7A81;&#x7136;&#x7684;&#x505C;&#x96FB;&#x554A;&#x3001; &#x7CFB;&#x7D71;&#x6838;&#x5FC3;&#x767C;&#x751F;&#x932F;&#x8AA4;)
+&#x5C0E;&#x81F4;&#x5BEB;&#x5165;&#x8CC7;&#x6599;&#x53EA;&#x6709; inode table&#x8207;data block&#xFF0C;&#x6700;&#x5F8C;&#x540C;&#x6B65;metadata&#x6C92;&#x6709;&#x505A;&#x5230;
+&#x6B64;&#x6642;&#x5C31;&#x6703;&#x767C;&#x751F; metadata &#x7684;&#x5167;&#x5BB9;&#x8207;&#x5BE6;&#x969B;&#x8CC7;&#x6599;&#x5B58;&#x653E;&#x5340;&#x7522;&#x751F;&#x4E0D;&#x4E00;&#x81F4; (Inconsistent) &#x7684;&#x60C5;&#x6CC1;&#x4E86;
+
+&#x89E3;&#x6CD5;:
+
+&#x7CFB;&#x7D71;&#x5728;&#x91CD;&#x65B0;&#x958B;&#x6A5F;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x5C31;&#x6703;&#x85C9;&#x7531; superblock &#x7576;&#x4E2D;&#x8A18;&#x9304;&#x7684; valid bit (&#x662F;&#x5426;&#x6709;&#x639B;&#x8F09;) &#x8207; filesystem state (clean &#x8207;&#x5426;) &#x7B49;&#x72C0;&#x614B;&#x4F86;&#x5224;&#x65B7;&#x662F;&#x5426;&#x5F37;&#x5236;&#x9032;&#x884C;&#x8CC7;&#x6599;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x6AA2;&#x67E5;
+
+&#x82E5;&#x6709;&#x9700;&#x8981;&#x6AA2;&#x67E5;&#x6642;&#x5247;&#x4EE5; e2fsck &#x9019;&#x652F;&#x7A0B;&#x5F0F;&#x4F86;&#x9032;&#x884C;
+
+&gt; &#x5F8C;&#x9762;&#x767C;&#x5C55;&#x51FA;&#x65E5;&#x8A8C;&#x5F0F;&#x6A94;&#x6848;&#x7CFB;&#x7D71; (Journaling filesystem)&#x514B;&#x670D;&#x6B64;&#x554F;&#x984C;
+</code></pre><h3 id="&#x65E5;&#x8A8C;&#x5F0F;&#x6A94;&#x6848;&#x7CFB;&#x7D71;-journaling-filesystem">&#x65E5;&#x8A8C;&#x5F0F;&#x6A94;&#x6848;&#x7CFB;&#x7D71; (Journaling filesystem)</h3>
+<p>filesystem &#x7576;&#x4E2D;&#x898F;&#x5283;&#x51FA;&#x4E00;&#x500B;&#x5340;&#x584A;&#xFF0C;&#x8A72;&#x5340;&#x584A;&#x5C08;&#x9580;&#x5728;&#x8A18;&#x9304;&#x5BEB;&#x5165;&#x6216;&#x4FEE;&#x8A02;&#x6A94;&#x6848;&#x6642;&#x7684;&#x6B65;&#x9A5F;</p>
+<ol>
+<li>&#x9810;&#x5099;&#xFF1A;&#x7576;&#x7CFB;&#x7D71;&#x8981;&#x5BEB;&#x5165;&#x4E00;&#x500B;&#x6A94;&#x6848;&#x6642;&#xFF0C;&#x6703;&#x5148;&#x5728;&#x65E5;&#x8A8C;&#x8A18;&#x9304;&#x5340;&#x584A;&#x4E2D;&#x7D00;&#x9304;&#x67D0;&#x500B;&#x6A94;&#x6848;&#x6E96;&#x5099;&#x8981;&#x5BEB;&#x5165;&#x7684;&#x8CC7;&#x8A0A;&#xFF1B;</li>
+<li>&#x5BE6;&#x969B;&#x5BEB;&#x5165;&#xFF1A;&#x958B;&#x59CB;&#x5BEB;&#x5165;&#x6A94;&#x6848;&#x7684;&#x6B0A;&#x9650;&#x8207;&#x8CC7;&#x6599;&#xFF1B;&#x958B;&#x59CB;&#x66F4;&#x65B0; metadata &#x7684;&#x8CC7;&#x6599;&#xFF1B;</li>
+<li>&#x7D50;&#x675F;&#xFF1A;&#x5B8C;&#x6210;&#x8CC7;&#x6599;&#x8207; metadata &#x7684;&#x66F4;&#x65B0;&#x5F8C;&#xFF0C;&#x5728;&#x65E5;&#x8A8C;&#x8A18;&#x9304;&#x5340;&#x584A;&#x7576;&#x4E2D;&#x5B8C;&#x6210;&#x8A72;&#x6A94;&#x6848;&#x7684;&#x7D00;&#x9304;&#x3002;</li>
+</ol>
+<p>&#x900F;&#x904E; <code>dumpe2fs</code>&#x6307;&#x4EE4;&#x53EF;&#x770B;&#x5230;superblock&#x5167;&#x542B;&#x6709;&#x65E5;&#x8A8C;&#x8CC7;&#x8A0A;</p>
+<pre><code>Journal inode:            8
+Journal backup:           inode blocks
+Journal features:         (none)
+Journal size:             32M
+Journal length:           8192
+Journal sequence:         0x00000001
+</code></pre><h2 id="7-1-6-linux-&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x904B;&#x4F5C;">7-1-6 Linux &#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x904B;&#x4F5C;</h2>
+<p>&#x900F;&#x904E;&#x975E;&#x540C;&#x6B65;&#x8655;&#x7406;(&#x900F;&#x904E;&#x5132;&#x5B58;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x7684;&#x65B9;&#x5F0F;)&#xFF0C;&#x89E3;&#x6C7A;&#x6A94;&#x6848;&#x7DE8;&#x8F2F;&#x983B;&#x7E41;&#x5BEB;&#x5165;&#x78C1;&#x789F;&#x9020;&#x6210;I/O&#x904E;&#x4E45;&#x554F;&#x984C;</p>
+<ul>
+<li>&#x7CFB;&#x7D71;&#x6703;&#x5C07;&#x5E38;&#x7528;&#x7684;&#x6A94;&#x6848;&#x8CC7;&#x6599;&#x653E;&#x7F6E;&#x5230;&#x4E3B;&#x8A18;&#x61B6;&#x9AD4;&#x7684;&#x7DE9;&#x885D;&#x5340;&#xFF0C;&#x4EE5;&#x52A0;&#x901F;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x8B80;/&#x5BEB;</li>
+<li>&#x53EF;&#x4EE5;&#x624B;&#x52D5;&#x4F7F;&#x7528; sync &#x4F86;&#x5F37;&#x8FEB;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x8A2D;&#x5B9A;&#x70BA; Dirty &#x7684;&#x6A94;&#x6848;&#x56DE;&#x5BEB;&#x5230;&#x78C1;&#x789F;&#x4E2D;<ul>
+<li>&#x82E5;&#x6B63;&#x5E38;&#x95DC;&#x6A5F;&#x6642;&#xFF0C;&#x95DC;&#x6A5F;&#x6307;&#x4EE4;&#x6703;&#x4E3B;&#x52D5;&#x547C;&#x53EB; sync &#x4F86;&#x5C07;&#x8A18;&#x61B6;&#x9AD4;&#x7684;&#x8CC7;&#x6599;&#x56DE;&#x5BEB;&#x5165;&#x78C1;&#x789F;&#x5167;&#xFF1B;</li>
+<li>&#x4F46;&#x82E5;&#x4E0D;&#x6B63;&#x5E38;&#x95DC;&#x6A5F;(&#x5982;&#x8DF3;&#x96FB;&#x3001;&#x7576;&#x6A5F;&#x6216;&#x5176;&#x4ED6;&#x4E0D;&#x660E;&#x539F;&#x56E0;)&#xFF0C;&#x7531;&#x65BC;&#x8CC7;&#x6599;&#x5C1A;&#x672A;&#x56DE;&#x5BEB;&#x5230;&#x78C1;&#x789F;&#x5167;&#xFF0C;&#x56E0;&#x6B64;&#x91CD;&#x65B0;&#x958B;&#x6A5F;&#x5F8C;&#x53EF;&#x80FD;&#x6703;&#x82B1;&#x5F88;&#x591A;&#x6642;&#x9593;&#x5728;&#x9032;&#x884C;&#x78C1;&#x789F;&#x6AA2;&#x9A57;&#xFF0C;&#x751A;&#x81F3;&#x53EF;&#x80FD;&#x5C0E;&#x81F4;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x640D;&#x6BC0;(&#x975E;&#x78C1;&#x789F;&#x640D;&#x6BC0;)&#x3002;</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-1-7-&#x639B;&#x8F09;&#x9EDE;&#x7684;&#x610F;&#x7FA9;-mount-point">7-1-7 &#x639B;&#x8F09;&#x9EDE;&#x7684;&#x610F;&#x7FA9; (mount point)</h2>
+<p>&#x5C07;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x8207;&#x76EE;&#x9304;&#x6A39;&#x7D50;&#x5408;&#x7684;&#x52D5;&#x4F5C;&#x7A31;&#x70BA; <code>&#x639B;&#x8F09;</code>&#xFF0C;&#x639B;&#x8F09;&#x9EDE;&#x4E00;&#x5B9A;&#x662F;&#x76EE;&#x9304;&#xFF0C;&#x70BA;&#x9032;&#x5165;&#x8A72;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x5165;&#x53E3;</p>
+<p>&#x6BCF;&#x500B; filesystem &#x90FD;&#x6709;&#x7368;&#x7ACB;&#x7684; inode / block / superblock &#x7B49;&#x8CC7;&#x8A0A;&#xFF0C;&#x9019;&#x500B;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x8981;&#x80FD;&#x5920;&#x9023;&#x7D50;&#x5230;&#x76EE;&#x9304;&#x6A39;&#x624D;&#x80FD;&#x88AB;&#x6211;&#x5011;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x5047;&#x5982;&#x67E5;&#x770B;CentOs 7&#x7248;&#xFF0C;&#x901A;&#x5E38;&#x6703;&#x6709;3&#x500B;&#x639B;&#x8F09;&#x9EDE; <code>/</code>, <code>/boot</code>, <code>home</code></p>
+<pre><code>[root@study ~]# ls -lid / /boot /home
+128 dr-xr-xr-x. 17 root root 4096 May  4 17:56 /
+128 dr-xr-xr-x.  4 root root 4096 May  4 17:59 /boot
+128 drwxr-xr-x.  5 root root   41 Jun 17 00:20 /home
+</code></pre><p>&#x56E0;&#x70BA;&#x6BCF;&#x4E00;&#x884C;&#x7684;&#x6A94;&#x6848;&#x5C6C;&#x6027;&#x4E26;&#x4E0D;&#x76F8;&#x540C;&#xFF0C;&#x4E14;&#x4E09;&#x500B;&#x76EE;&#x9304;&#x7684;&#x639B;&#x8F09;&#x9EDE;&#x4E5F;&#x5747;&#x4E0D;&#x76F8;&#x540C;</p>
+<h2 id="7-1-8-&#x5176;&#x4ED6;-linux-&#x652F;&#x63F4;&#x7684;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x8207;-vfs">7-1-8 &#x5176;&#x4ED6; Linux &#x652F;&#x63F4;&#x7684;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x8207; VFS</h2>
+<ul>
+<li>&#x50B3;&#x7D71;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#xFF1A;ext2 / minix / MS-DOS / FAT (&#x7528; vfat &#x6A21;&#x7D44;) / iso9660 (&#x5149;&#x789F;)&#x7B49;&#x7B49;&#xFF1B;</li>
+<li>&#x65E5;&#x8A8C;&#x5F0F;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#xFF1A; ext3 /ext4 / ReiserFS / Windows&apos; NTFS / IBM&apos;s JFS / SGI&apos;s XFS / ZFS</li>
+<li>&#x7DB2;&#x8DEF;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#xFF1A; NFS / SMBFS</li>
+</ul>
+<h3 id="linux-vfs-virtual-filesystem-switch">Linux VFS (Virtual Filesystem Switch)</h3>
+<p>Linux&#x7CFB;&#x7D71;&#x900F;&#x904E; VFS&#x7684;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#x8B80;&#x53D6;&#x6A94;&#x6848;&#x7CFB;&#x7D71;</p>
+<p>&#x5047;&#x5982; </p>
+<ul>
+<li><code>/</code>&#x4F7F;&#x7528; /dev/hda1&#xFF0C;&#x7528;ext3</li>
+<li><code>/home</code>&#x4F7F;&#x7528; /dev/hda2&#xFF0C;&#x7528;reiserfs</li>
+</ul>
+<p>&#x53D6;&#x7528; /home/dmtsai/.bashrc &#x6642;&#xFF0C; VFS &#x7684;&#x529F;&#x80FD;&#x6703;&#x81EA;&#x52D5;&#x4F7F;&#x7528;&#x5C0D;&#x61C9;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x8B80;&#x53D6;&#x7684;&#x8A2D;&#x5B9A;&#x6A21;&#x7D44;&#xFF01;&#x4F7F;&#x7528;&#x8005;&#x4E0D;&#x7528;&#x81EA;&#x884C;&#x8A2D;&#x5B9A;</p>
+<p>&#x4E0B;&#x5716;&#x70BA;&#x6574;&#x500B;VFS&#x7684;&#x529F;&#x80FD;&#x8AAA;&#x660E;</p>
+<p><img src="https://i.imgur.com/bhiW9YV.png" alt=""></p>
+<p>&#x5716;7-1-8.1 VFS &#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x793A;&#x610F;&#x5716; (<a href="http://linux.vbird.org/linux_basic/0230filesystem.php#harddisk-physical" target="_blank">&#x4F86;&#x6E90;: &#x9CE5;&#x54E5;Linux&#x79C1;&#x623F;&#x83DC;</a>)</p>
+<h2 id="7-1-9-xfs-&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7C21;&#x4ECB;">7-1-9 XFS &#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7C21;&#x4ECB;</h2>
+<h3 id="centos-&#x5C31;&#x662F;-xfs-&#xFF01;">CentOS &#x5C31;&#x662F; XFS &#xFF01;</h3>
+<pre><code>Q: &#x70BA;&#x4F55;CentOS&#x6368;&#x68C4;Linux&#x652F;&#x63F4;&#x5DF2;&#x4E45;&#x7684;ext&#x5BB6;&#x65CF;&#xFF1F;
+
+A: &#x56E0;&#x70BA;ext&#x4F7F;&#x7528;&#x7684;&#x662F; &quot;&#x9810;&#x5148;&#x5206;&#x914D;&quot; &#x6A94;&#x6848;&#x7D50;&#x69CB;&#x8CC7;&#x6E90;&#x7684; inode/block/meta data&#x7684;&#x7D50;&#x69CB;&#xFF0C;&#x82E5;&#x5728;&#x5BB9;&#x91CF;&#x975E;&#x5E38;&#x5927;&#x7684;&#x60C5;&#x666F;&#xFF0C;&#x5149;&#x662F;&#x683C;&#x5F0F;&#x5316;&#x505A;&#x9810;&#x5148;&#x5206;&#x914D;inode&#x8207;block&#x5C31;&#x6703;&#x6D88;&#x8017;&#x975E;&#x5E38;&#x591A;&#x6642;&#x9593;
+</code></pre><p>XFS &#x9069;&#x5408;&#x9AD8;&#x5BB9;&#x91CF;&#x78C1;&#x789F;&#x8207;&#x5DE8;&#x578B;&#x6A94;&#x6848;&#x6548;&#x80FD;&#x8F03;&#x4F73;&#x7684;&#x6A94;&#x6848;&#x7CFB;&#x7D71;</p>
+<ul>
+<li>xfs &#x5C31;&#x662F;&#x4E00;&#x500B;&#x65E5;&#x8A8C;&#x5F0F;&#x6A94;&#x6848;&#x7CFB;&#x7D71;</li>
+<li>&#x6240;&#x6709; Ext4 &#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x6709;&#x7684;&#x529F;&#x80FD;&#xFF0C; xfs &#x90FD;&#x53EF;&#x4EE5;&#x5177;&#x5099;</li>
+</ul>
+<h3 id="&#x8CC7;&#x6599;&#x5206;&#x5E03;&#x7684;&#x898F;&#x5283;">&#x8CC7;&#x6599;&#x5206;&#x5E03;&#x7684;&#x898F;&#x5283;</h3>
+<ol>
+<li><p>&#x8CC7;&#x6599;&#x5340; (data section)</p>
+<ul>
+<li>&#x4E5F;&#x662F;&#x4F7F;&#x7528;&#x8DDF;ext&#x5BB6;&#x65CF;&#x4E00;&#x6A23;&#x7684;inode/data block&#x7B49;&#x8CC7;&#x6599;&#xFF0C;&#x4F46;xfs &#x7684; block &#x8207; inode &#x6709;&#x591A;&#x7A2E;&#x4E0D;&#x540C;&#x7684;&#x5BB9;&#x91CF;&#x53EF;&#x4F9B;&#x8A2D;&#x5B9A;&#xFF0C;block &#x5BB9;&#x91CF;&#x53EF;&#x7531; 512bytes ~ 64K &#x8ABF;&#x914D;&#x3002;</li>
+</ul>
+</li>
+<li><p>&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x6D3B;&#x52D5;&#x767B;&#x9304;&#x5340; (log section)</p>
+<ul>
+<li>&#x7D00;&#x9304;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x8B8A;&#x5316;</li>
+<li>&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x5916;&#x90E8;&#x7684;&#x78C1;&#x789F;&#x4F86;&#x4F5C;&#x70BA; xfs &#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x65E5;&#x8A8C;&#x5340;&#x584A;</li>
+</ul>
+</li>
+<li>&#x5373;&#x6642;&#x904B;&#x4F5C;&#x5340; (realtime section)<ul>
+<li>xfs &#x6703;&#x5728;&#x9019;&#x500B;&#x5340;&#x6BB5;&#x88E1;&#x9762;&#x627E;&#x4E00;&#x500B;&#x5230;&#x6578;&#x500B;&#x7684; extent &#x5340;&#x584A;&#xFF0C;&#x5C07;&#x6A94;&#x6848;&#x653E;&#x7F6E;&#x5728;&#x9019;&#x500B;&#x5340;&#x584A;&#x5167;&#xFF0C;&#x7B49;&#x5230;&#x5206;&#x914D;&#x5B8C;&#x7562;&#x5F8C;&#xFF0C;&#x518D;&#x5BEB;&#x5165;&#x5230; data section &#x7684; inode &#x8207; block &#x53BB;</li>
+<li>extent &#x5340;&#x584A;&#x7684;&#x5927;&#x5C0F;&#x5F97;&#x8981;&#x5728;&#x683C;&#x5F0F;&#x5316;&#x7684;&#x6642;&#x5019;&#x5C31;&#x5148;&#x6307;&#x5B9A;<ul>
+<li>&#x6700;&#x5C0F;&#x503C;&#x662F; 4K &#x6700;&#x5927;&#x53EF;&#x5230; 1G</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="&#x4F7F;&#x7528;-xfsinfo-&#x6307;&#x4EE4;&#x89C0;&#x5BDF;xfs-superblock&#x8CC7;&#x8A0A;">&#x4F7F;&#x7528; <code>xfs_info</code> &#x6307;&#x4EE4;&#x89C0;&#x5BDF;XFS superblock&#x8CC7;&#x8A0A;</h3>
+<pre><code>[root@study ~]# xfs_info &#x639B;&#x8F09;&#x9EDE;|&#x88DD;&#x7F6E;&#x6A94;&#x540D;
+
+&#x7BC4;&#x4F8B;&#x4E00;&#xFF1A;&#x627E;&#x51FA;&#x7CFB;&#x7D71; /boot &#x9019;&#x500B;&#x639B;&#x8F09;&#x9EDE;&#x5E95;&#x4E0B;&#x7684;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684; superblock &#x7D00;&#x9304;
+[root@study ~]# df -T /boot
+Filesystem     Type 1K-blocks   Used Available Use% Mounted on
+/dev/vda2      xfs    1038336 133704    904632  13% /boot
+
+[root@study ~]# xfs_info /dev/vda2
+1  meta-data=/dev/vda2         isize=256    agcount=4, agsize=65536 blks
+2           =                  sectsz=512   attr=2, projid32bit=1
+3           =                  crc=0        finobt=0
+4  data     =                  bsize=4096   blocks=262144, imaxpct=25
+5           =                  sunit=0      swidth=0 blks
+6  naming   =version 2         bsize=4096   ascii-ci=0 ftype=0
+7  log      =internal          bsize=4096   blocks=2560, version=2
+8           =                  sectsz=512   sunit=0 blks, lazy-count=1
+9  realtime =none              extsz=4096   blocks=0, rtextents=0
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../ch7.html" class="navigation navigation-prev " aria-label="Previous page: Ch.7 Linux檔案目錄、與磁碟格式">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ch7-1-3.html" class="navigation navigation-next " aria-label="Next page: Sec.7-1-3 區塊群組(block group)的六個主要內容說明">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Sec.7-1 認識Linux檔案系統","level":"1.2.1","depth":2,"next":{"title":"Sec.7-1-3 區塊群組(block group)的六個主要內容說明","level":"1.2.1.1","depth":3,"path":"ch7/ch7-1-3.md","ref":"ch7/ch7-1-3.md","articles":[]},"previous":{"title":"Ch.7 Linux檔案目錄、與磁碟格式","level":"1.2","depth":1,"path":"ch7.md","ref":"ch7.md","articles":[{"title":"Sec.7-1 認識Linux檔案系統","level":"1.2.1","depth":2,"path":"ch7/ch7-1.md","ref":"ch7/ch7-1.md","articles":[{"title":"Sec.7-1-3 區塊群組(block group)的六個主要內容說明","level":"1.2.1.1","depth":3,"path":"ch7/ch7-1-3.md","ref":"ch7/ch7-1-3.md","articles":[]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["disqus","intopic-toc","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"MessageBoard"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"內容綱要","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch7/ch7-1.md","mtime":"2020-10-04T00:54:22.150Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-04T00:54:53.419Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

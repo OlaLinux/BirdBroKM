@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    "disqus",
+    "intopic-toc"
+  ],
+  "pluginsConfig": {
+    "theme-default": {
+      "showLevel": false
+    },
+    "intopic-toc": {
+      "label": "內容綱要"
+    },
+    "disqus": {
+      "shortName": "MessageBoard"
+    }
+  }
+}
