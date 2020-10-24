@@ -1,0 +1,838 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>11.1 基礎正規表示法 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ch11-2.html" />
+    
+    
+    <link rel="prev" href="ch11.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../ch7/ch7.html">
+            
+                <a href="../ch7/ch7.html">
+            
+                    
+                    Ch.7 Linux檔案目錄、與磁碟格式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../ch7/ch7-1.html">
+            
+                <a href="../ch7/ch7-1.html">
+            
+                    
+                    7.1 認識Linux檔案系統
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../ch7/ch7-1-3.html">
+            
+                <a href="../ch7/ch7-1-3.html">
+            
+                    
+                    7.1.3 區塊群組(block group)的六個主要內容說明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../ch7/ch7-3.html">
+            
+                <a href="../ch7/ch7-3.html">
+            
+                    
+                    7.2 檔案系統操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../ch7/ch7-3.html">
+            
+                <a href="../ch7/ch7-3.html">
+            
+                    
+                    7.3 磁碟的分割、格式化、檢驗與掛載
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../ch7/ch7-4.html">
+            
+                <a href="../ch7/ch7-4.html">
+            
+                    
+                    7.4 設定開機掛載
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../ch7/ch7-5.html">
+            
+                <a href="../ch7/ch7-5.html">
+            
+                    
+                    7.5 記憶體置換空間(swap)之建置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../ch7/ch7-6.html">
+            
+                <a href="../ch7/ch7-6.html">
+            
+                    
+                    7.6 檔案系統的特殊觀察與操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../ch9/ch9.html">
+            
+                <a href="../ch9/ch9.html">
+            
+                    
+                    Ch.9 Vi與Vim編輯器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../ch9/ch9-2.html">
+            
+                <a href="../ch9/ch9-2.html">
+            
+                    
+                    9.2 vi 按鍵說明使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../ch9/ch9-3.html">
+            
+                <a href="../ch9/ch9-3.html">
+            
+                    
+                    9.3 vim 的進階功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="ch11.html">
+            
+                <a href="ch11.html">
+            
+                    
+                    Ch.11 正規表示法與文件格式化處理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.1" data-path="ch11-1.html">
+            
+                <a href="ch11-1.html">
+            
+                    
+                    11.1 基礎正規表示法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="ch11-2.html">
+            
+                <a href="ch11-2.html">
+            
+                    
+                    11.2 sed：以行為單位進行處理的工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="ch11-3.html">
+            
+                <a href="ch11-3.html">
+            
+                    
+                    11.3 延伸正規表示法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="ch11-4.html">
+            
+                <a href="ch11-4.html">
+            
+                    
+                    11.4 格式化列印 prinf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="ch11-5.html">
+            
+                <a href="ch11-5.html">
+            
+                    
+                    11.5 awk: 資料處理工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="ch11-6.html">
+            
+                <a href="ch11-6.html">
+            
+                    
+                    11.6 diff, cmp, patch 檔案比對工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >11.1 基礎正規表示法</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="111-&#x57FA;&#x790E;&#x6B63;&#x898F;&#x8868;&#x793A;&#x6CD5;">11.1 &#x57FA;&#x790E;&#x6B63;&#x898F;&#x8868;&#x793A;&#x6CD5;</h1>
+<h2 id="1-&#x8A9E;&#x7CFB;&#x5C0D;&#x6B63;&#x898F;&#x8868;&#x793A;&#x6CD5;&#x4E4B;&#x5F71;&#x97FF;">1. &#x8A9E;&#x7CFB;&#x5C0D;&#x6B63;&#x898F;&#x8868;&#x793A;&#x6CD5;&#x4E4B;&#x5F71;&#x97FF;</h2>
+<p>&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6B63;&#x898F;&#x8868;&#x793A;&#x6CD5;&#x7684;&#x74B0;&#x5883;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x8A9E;&#x7CFB;&#x70BA;&#x4F55;</p>
+<p>&#x4E0D;&#x540C;&#x8A9E;&#x7CFB;&#x6703;&#x9020;&#x6210;&#x6B63;&#x898F;&#x8868;&#x9054;&#x5F0F;&#x64F7;&#x53D6;&#x7D50;&#x679C;&#x7684;&#x5DEE;&#x7570;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<ul>
+<li>LANG=C     &#x6642;&#xFF1A;0 1 2 3 4 ... A B C D ... Z a b c d ...z</li>
+<li>LANG=zh_TW &#x6642;&#xFF1A;0 1 2 3 4 ... a A b B c C d D ... z Z</li>
+</ul>
+<p>&#x82E5;&#x662F;LANG=C, &#x53EF;&#x4EE5;&#x53D6;&#x5230;&#x5927;&#x5BEB;&#x5B57;&#x5143; (&#x56E0;&#x70BA;&#x662F;&#x9023;&#x7E8C;)
+&#x82E5;&#x662F;LANG=zh_TW, &#x53EF;&#x80FD;&#x6703;&#x9023;&#x5C0F;&#x5BEB;&#x90FD;&#x64F7;&#x53D6;&#x51FA;&#x4F86;</p>
+<h3 id="&#x900F;&#x904E;&#x7279;&#x6B8A;&#x7B26;&#x865F;&#x89E3;&#x6C7A;&#x7DE8;&#x78BC;&#x8A9E;&#x7CFB;&#x5DEE;&#x7570;">&#x900F;&#x904E;&#x7279;&#x6B8A;&#x7B26;&#x865F;&#x89E3;&#x6C7A;&#x7DE8;&#x78BC;&#x8A9E;&#x7CFB;&#x5DEE;&#x7570;</h3>
+<p>[:alnum:]    &#x4EE3;&#x8868;&#x82F1;&#x6587;&#x5927;&#x5C0F;&#x5BEB;&#x5B57;&#x5143;&#x53CA;&#x6578;&#x5B57;&#xFF0C;&#x4EA6;&#x5373; 0-9, A-Z, a-z</p>
+<p>[:alpha:]    &#x4EE3;&#x8868;&#x4EFB;&#x4F55;&#x82F1;&#x6587;&#x5927;&#x5C0F;&#x5BEB;&#x5B57;&#x5143;&#xFF0C;&#x4EA6;&#x5373; A-Z, a-z</p>
+<p>[:blank:]    &#x4EE3;&#x8868;&#x7A7A;&#x767D;&#x9375;&#x8207; [Tab] &#x6309;&#x9375;&#x5169;&#x8005;</p>
+<p>[:cntrl:]    &#x4EE3;&#x8868;&#x9375;&#x76E4;&#x4E0A;&#x9762;&#x7684;&#x63A7;&#x5236;&#x6309;&#x9375;&#xFF0C;&#x4EA6;&#x5373;&#x5305;&#x62EC; CR, LF, Tab, Del.. &#x7B49;&#x7B49;</p>
+<p>[:digit:]    &#x4EE3;&#x8868;&#x6578;&#x5B57;&#x800C;&#x5DF2;&#xFF0C;&#x4EA6;&#x5373; 0-9</p>
+<p>[:graph:]    &#x9664;&#x4E86;&#x7A7A;&#x767D;&#x5B57;&#x5143; (&#x7A7A;&#x767D;&#x9375;&#x8207; [Tab] &#x6309;&#x9375;) &#x5916;&#x7684;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x6309;&#x9375;</p>
+<p>[:lower:]    &#x4EE3;&#x8868;&#x5C0F;&#x5BEB;&#x5B57;&#x5143;&#xFF0C;&#x4EA6;&#x5373; a-z</p>
+<p>[:print:]    &#x4EE3;&#x8868;&#x4EFB;&#x4F55;&#x53EF;&#x4EE5;&#x88AB;&#x5217;&#x5370;&#x51FA;&#x4F86;&#x7684;&#x5B57;&#x5143;</p>
+<p>[:punct:]    &#x4EE3;&#x8868;&#x6A19;&#x9EDE;&#x7B26;&#x865F; (punctuation symbol)&#xFF0C;&#x4EA6;&#x5373;&#xFF1A;&quot; &apos; ? ! ; : # $...</p>
+<p>[:upper:]    &#x4EE3;&#x8868;&#x5927;&#x5BEB;&#x5B57;&#x5143;&#xFF0C;&#x4EA6;&#x5373; A-Z</p>
+<p>[:space:]    &#x4EFB;&#x4F55;&#x6703;&#x7522;&#x751F;&#x7A7A;&#x767D;&#x7684;&#x5B57;&#x5143;&#xFF0C;&#x5305;&#x62EC;&#x7A7A;&#x767D;&#x9375;, [Tab], CR &#x7B49;&#x7B49;</p>
+<p>[:xdigit:]    &#x4EE3;&#x8868; 16 &#x9032;&#x4F4D;&#x7684;&#x6578;&#x5B57;&#x985E;&#x578B;&#xFF0C;&#x56E0;&#x6B64;&#x5305;&#x62EC;&#xFF1A; 0-9, A-F, a-f &#x7684;&#x6578;&#x5B57;&#x8207;&#x5B57;&#x5143;</p>
+<h2 id="2-grep&#x5167;&#x5EFA;&#x6B63;&#x898F;&#x8868;&#x793A;&#x6CD5;&#x7684;&#x7DF4;&#x7FD2;">2. grep&#x5167;&#x5EFA;&#x6B63;&#x898F;&#x8868;&#x793A;&#x6CD5;&#x7684;&#x7DF4;&#x7FD2;</h2>
+<h3 id="&#x524D;&#x7F6E;&#x4F5C;&#x696D;">&#x524D;&#x7F6E;&#x4F5C;&#x696D;</h3>
+<ol>
+<li>&#x8A9E;&#x7CFB;&#x5DF2;&#x7D93;&#x4F7F;&#x7528;&#x300E; export LANG=C; export LC_ALL=C &#x300F;&#x7684;&#x8A2D;&#x5B9A;&#x503C;&#xFF1B;</li>
+<li>grep &#x5DF2;&#x7D93;&#x4F7F;&#x7528; alias &#x8A2D;&#x5B9A;&#x6210;&#x70BA;&#x300E; grep --color=auto &#x300F;</li>
+</ol>
+<h3 id="&#x7BC4;&#x4F8B;">&#x7BC4;&#x4F8B;</h3>
+<p>&#x4EE5;&#x4E0B;&#x7BC4;&#x4F8B;&#x51FA;&#x81EA;<a href="http://linux.vbird.org/linux_basic/0330regularex.php#before" target="_blank">&#x9CE5;&#x54E5;&#x7684;Linux&#x79C1;&#x623F;&#x83DC;&#x4E4B;&#x7DF4;&#x7FD2;</a></p>
+<p>regular_express.txt</p>
+<pre><code>&quot;Open Source&quot; is a good mechanism to develop programs.
+apple is my favorite food.
+Football game is not use feet only.
+this dress doesn&apos;t fit me.
+However, this dress is about $ 3183 dollars.^M
+GNU is free air not free beer.^M
+Her hair is very beauty.^M
+I can&apos;t finish the test.^M
+Oh! The soup taste good.^M
+motorcycle is cheap than car.
+This window is clear.
+the symbol &apos;*&apos; is represented as start.
+Oh!     My god!
+The gd software is a library for drafting programs.^M
+You are the best is mean you are the no. 1.
+The world &lt;Happy&gt; is the same with &quot;glad&quot;.
+I like dog.
+google is the best tools for search keyword.
+goooooogle yes!
+go! go! Let&apos;s go.
+# I am VBird
+</code></pre><h3 id="&#x7DF4;&#x7FD2;&#x4E00;&#xFF1A;&#x641C;&#x5C0B;&#x7279;&#x5B9A;&#x5B57;&#x4E32;">&#x7DF4;&#x7FD2;&#x4E00;&#xFF1A;&#x641C;&#x5C0B;&#x7279;&#x5B9A;&#x5B57;&#x4E32;</h3>
+<p>&#x5F9E;regular_express.txt &#x4E2D;&#x627E;&#x51FA; <code>the</code> &#x95DC;&#x9375;&#x5B57;&#xFF0C;&#x900F;&#x904E; <code>grep -n</code> &#x79C0;&#x51FA;&#x95DC;&#x9375;&#x5B57;&#x5728;&#x7B2C;&#x5E7E;&#x884C;&#x51FA;&#x73FE;</p>
+<pre><code class="lang-shell">$ grep -n &apos;the&apos; regular_express.txt 
+8:I can&apos;t finish the test.
+12:the symbol &apos;*&apos; is represented as start.
+15:You are the best is mean you are the no. 1.
+16:The world &lt;Happy&gt; is the same with &quot;glad&quot;.
+18:google is the best tools for search keyword.
+</code></pre>
+<p><code>grep -in</code> &#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#x5927;&#x5C0F;&#x5BEB;&#xFF0C;&#x53EA;&#x8981;&#x662F;&#x7B26;&#x5408; <code>the</code> &#x5C31;&#x627E;&#x51FA;</p>
+<pre><code class="lang-shell">$ grep -in &apos;the&apos; regular_express.txt 
+8:I can&apos;t finish the test.
+9:Oh! The soup taste good.
+12:the symbol &apos;*&apos; is represented as start.
+14:The gd software is a library for drafting programs.
+15:You are the best is mean you are the no. 1.
+16:The world &lt;Happy&gt; is the same with &quot;glad&quot;.
+18:google is the best tools for search keyword.
+</code></pre>
+<h3 id="&#x7DF4;&#x7FD2;&#x4E8C;&#xFF1A;&#x5229;&#x7528;&#x4E2D;&#x62EC;&#x865F;--&#x4F86;&#x641C;&#x5C0B;&#x96C6;&#x5408;&#x5B57;&#x5143;">&#x7DF4;&#x7FD2;&#x4E8C;&#xFF1A;&#x5229;&#x7528;&#x4E2D;&#x62EC;&#x865F; [] &#x4F86;&#x641C;&#x5C0B;&#x96C6;&#x5408;&#x5B57;&#x5143;</h3>
+<ul>
+<li>&#x82E5;&#x8981;&#x641C;&#x5C0B; <code>test</code> &#x6216; <code>taste</code>&#x9019;&#x5169;&#x500B;&#x55AE;&#x5B57;&#xFF0C;&#x7531;&#x65BC;&#x9019;&#x5169;&#x500B;&#x55AE;&#x5B57;&#x90FD;&#x6709;&#x5171;&#x901A;&#x7684; &apos;t?st&apos; &#x5B58;&#x5728;&#xFF0C;&#x53EF;&#x7528; <code>t[ae]st</code> &#x4F86;&#x641C;&#x5C0B;</li>
+</ul>
+<pre><code class="lang-shell">$ grep -n &apos;t[ae]st&apos; regular_express.txt 
+8:I can&apos;t finish the test.
+9:Oh! The soup taste good.
+</code></pre>
+<blockquote>
+<p>&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x53EA;&#x6703;&#x7B26;&#x5408; [ae] &#x5167;&#x7684; a &#x6216; e &#x5B57;&#x5143;</p>
+</blockquote>
+<h4 id="&#x82E5;&#x60F3;&#x8981;&#x627E;&#x5C0B;-oo">&#x82E5;&#x60F3;&#x8981;&#x627E;&#x5C0B; <code>oo</code></h4>
+<pre><code class="lang-shell">$ grep -n &apos;oo&apos; regular_express.txt 
+1:&quot;Open Source&quot; is a good mechanism to develop programs.
+2:apple is my favorite food.
+3:Football game is not use feet only.
+9:Oh! The soup taste good.
+18:google is the best tools for search keyword.
+19:goooooogle yes!
+</code></pre>
+<h4 id="&#x82E5;-oo-&#x524D;&#x9762;&#x4E0D;&#x6253;&#x7B97;&#x6709;-g-&#x53EF;&#x7528;--&#x9054;&#x6210;">&#x82E5; oo &#x524D;&#x9762;&#x4E0D;&#x6253;&#x7B97;&#x6709; g, &#x53EF;&#x7528; <code>[^]</code> &#x9054;&#x6210;</h4>
+<pre><code class="lang-shell">$ grep -n &apos;[^g]oo&apos; regular_express.txt 
+2:apple is my favorite food.
+3:Football game is not use feet only.
+18:google is the best tools for search keyword.
+19:goooooogle yes!
+</code></pre>
+<h4 id="&#x82E5;-oo-&#x524D;&#x9762;&#x4E0D;&#x8981;&#x6709;&#x5C0F;&#x5BEB;&#x5B57;&#x5143;&#xFF0C;&#x53EF;&#x7528;-a-z">&#x82E5; oo &#x524D;&#x9762;&#x4E0D;&#x8981;&#x6709;&#x5C0F;&#x5BEB;&#x5B57;&#x5143;&#xFF0C;&#x53EF;&#x7528; <code>[^a-z]</code></h4>
+<pre><code class="lang-shell">$ grep -n &apos;[^a-z]oo&apos; regular_express.txt
+3:Football game is not use feet only.
+</code></pre>
+<h4 id="&#x82E5;&#x53EA;&#x60F3;&#x627E;&#x51FA;&#x6578;&#x5B57;-0-9">&#x82E5;&#x53EA;&#x60F3;&#x627E;&#x51FA;&#x6578;&#x5B57; <code>[0-9]</code></h4>
+<pre><code class="lang-shell">$ grep -n &apos;[0-9]&apos; regular_express.txt 
+5:However, this dress is about $ 3183 dollars.
+15:You are the best is mean you are the no. 1.
+</code></pre>
+<h4 id="&#x82E5;&#x8981;&#x907F;&#x514D;&#x8A9E;&#x7CFB;&#x5F71;&#x97FF;&#xFF0C;&#x4F7F;&#x7528;-lower&#x4F86;&#x4EE3;&#x66FF;-a-z">&#x82E5;&#x8981;&#x907F;&#x514D;&#x8A9E;&#x7CFB;&#x5F71;&#x97FF;&#xFF0C;&#x4F7F;&#x7528; <code>[:lower:]</code>&#x4F86;&#x4EE3;&#x66FF; <code>[a-z]</code></h4>
+<pre><code class="lang-shell">$ grep -n &apos;[[:lower:]]oo&apos; regular_express.txt 
+1:&quot;Open Source&quot; is a good mechanism to develop programs.
+2:apple is my favorite food.
+9:Oh! The soup taste good.
+18:google is the best tools for search keyword.
+19:goooooogle yes!
+</code></pre>
+<h3 id="&#x7DF4;&#x7FD2;&#x4E09;&#xFF1A;&#x884C;&#x9996;&#x8207;&#x884C;&#x5C3E;&#x5B57;&#x5143;-">&#x7DF4;&#x7FD2;&#x4E09;&#xFF1A;&#x884C;&#x9996;&#x8207;&#x884C;&#x5C3E;&#x5B57;&#x5143; <code>^$</code></h3>
+<ul>
+<li><p>&#x5982;&#x679C;&#x53EA;&#x6253;&#x7B97;&#x641C;&#x5C0B;&#x5728;&#x958B;&#x982D;&#x7B26;&#x5408;&#x7684;&#x7279;&#x5B9A;&#x5B57;&#x4E32;&#xFF0C;&#x4F7F;&#x7528; <code>^</code></p>
+</li>
+<li><p>&#x82E5;&#x662F;&#x5B57;&#x5C3E;&#xFF0C;&#x4F7F;&#x7528; <code>$</code></p>
+</li>
+</ul>
+<h4 id="&#x53EA;&#x60F3;&#x5217;&#x51FA;&#x5728;&#x884C;&#x9996;&#x7684;-the">&#x53EA;&#x60F3;&#x5217;&#x51FA;&#x5728;&#x884C;&#x9996;&#x7684; <code>the</code></h4>
+<pre><code class="lang-shell">$ grep -n &apos;^the&apos; regular_express.txt 
+12:the symbol &apos;*&apos; is represented as start.
+</code></pre>
+<h4 id="&#x958B;&#x982D;&#x53EA;&#x80FD;&#x662F;&#x5C0F;&#x5BEB;">&#x958B;&#x982D;&#x53EA;&#x80FD;&#x662F;&#x5C0F;&#x5BEB;</h4>
+<pre><code class="lang-shell">$ grep -n &apos;^[a-z]&apos; regular_express.txt
+2:apple is my favorite food.
+4:this dress doesn&apos;t fit me.
+10:motorcycle is cheap than car.
+12:the symbol &apos;*&apos; is represented as start.
+18:google is the best tools for search keyword.
+19:goooooogle yes!
+20:go! go! Let&apos;s go.
+</code></pre>
+<h4 id="&#x82E5;&#x4E0D;&#x60F3;&#x8981;&#x958B;&#x982D;&#x70BA;&#x82F1;&#x6587;&#x5B57;&#x6BCD;">&#x82E5;&#x4E0D;&#x60F3;&#x8981;&#x958B;&#x982D;&#x70BA;&#x82F1;&#x6587;&#x5B57;&#x6BCD;</h4>
+<pre><code class="lang-shell">$ grep -n &apos;^[^a-zA-Z]&apos; regular_express.txt 
+1:&quot;Open Source&quot; is a good mechanism to develop programs.
+21:# I am VBird
+</code></pre>
+<blockquote>
+<p>&#x5916;&#x982D;&#x7684; ^ &#x70BA; &#x884C;&#x9996;&#xFF0C;[]&#x5167;&#x7684; ^ &#x70BA;&#x6392;&#x9664;</p>
+</blockquote>
+<ul>
+<li>&#x884C;&#x5C3E;&#x7D50;&#x675F;&#x70BA;&#x5C0F;&#x6578;&#x9EDE; .</li>
+</ul>
+<pre><code class="lang-shell">$ grep -n &apos;\.$&apos; regular_express.txt 
+1:&quot;Open Source&quot; is a good mechanism to develop programs.
+2:apple is my favorite food.
+3:Football game is not use feet only.
+4:this dress doesn&apos;t fit me.
+10:motorcycle is cheap than car.
+11:This window is clear.
+12:the symbol &apos;*&apos; is represented as start.
+15:You are the best is mean you are the no. 1.
+16:The world &lt;Happy&gt; is the same with &quot;glad&quot;.
+17:I like dog.
+18:google is the best tools for search keyword.
+20:go! go! Let&apos;s go.
+</code></pre>
+<p>&#x4E0D;&#x904E;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x9CE5;&#x54E5;&#x7684;&#x7BC4;&#x4F8B;&#x5167;&#xFF0C;&#x5176;&#x5BE6;&#x7B2C; 5-9&#x884C;&#x7D50;&#x5C3E;&#x4E5F;&#x662F;&#x5C0F;&#x6578;&#x9EDE;&#xFF0C;&#x4F46;&#x7121;&#x6CD5;&#x88AB;&#x6293;&#x9664;&#x4F86;&#x7684;&#x539F;&#x56E0;&#x662F;&#xFF0C;&#x5728;windows&#x4E0A;&#x5C0D;&#x65B7;&#x884C;&#x5B57;&#x5143;&#x7684;&#x5B58;&#x5728;&#x7684;&#x5224;&#x65B7;&#x6240;&#x9020;&#x6210;&#x7684;</p>
+<p>&#x53EF;&#x7528; cat &#x642D;&#x914D; head&#x8207;tail&#x4F86;&#x67E5;&#x627E;&#xFF0C;&#x53EF;&#x770B;&#x5230;&#x7D50;&#x5C3E;&#x6709; <code>^M$</code> &#x8207; <code>$</code>&#xFF0C;&#x70BA;&#x65B7;&#x884C;&#x5B57;&#x5143;</p>
+<pre><code class="lang-shell">$ cat -An regular_express.txt | head -n 10 | tail -n 6
+     5    However, this dress is about $ 3183 dollars.^M$
+     6    GNU is free air not free beer.^M$
+     7    Her hair is very beauty.^M$
+     8    I can&apos;t finish the test.^M$
+     9    Oh! The soup taste good.^M$
+    10    motorcycle is cheap than car.$
+</code></pre>
+<blockquote>
+<p>&#x65B7;&#x884C;&#x5B57;&#x5143; Linux: <code>$</code>, Windows: <code>^M$</code></p>
+</blockquote>
+<ul>
+<li>&#x627E;&#x51FA;&#x7A7A;&#x767D;&#x884C;</li>
+</ul>
+<pre><code class="lang-shell">grep -n &apos;^$&apos; regular_express.txt 
+22:
+</code></pre>
+<h4 id="&#x5C07;&#x6A94;&#x6848;&#x5167;&#x7684;&#x7A7A;&#x767D;&#x884C;&#x8207;&#x7684;&#x8A3B;&#x89E3;&#x7D66;&#x7701;&#x53BB;&#x6389;&#xFF0C;&#x53EA;&#x5370;&#x51FA;&#x5167;&#x5BB9;&#xFF01;-&#x5BE6;&#x7528;">&#x5C07;&#x6A94;&#x6848;&#x5167;&#x7684;&#x7A7A;&#x767D;&#x884C;&#x8207;#&#x7684;&#x8A3B;&#x89E3;&#x7D66;&#x7701;&#x53BB;&#x6389;&#xFF0C;&#x53EA;&#x5370;&#x51FA;&#x5167;&#x5BB9;&#xFF01; (&#x5BE6;&#x7528;)</h4>
+<p>&#x5148;&#x7528; <code>^$</code> &#x5C07;&#x67D0;&#x7CFB;&#x7D71;&#x6A94;&#x6848;&#x5167;&#x7684;&#x7A7A;&#x767D;&#x7D66;&#x904E;&#x6FFE;&#xFF0C;&#x518D;&#x7528; <code>|</code> &#x5C07;&#x8F38;&#x51FA;&#x518D;&#x7D66; grep&#x505A;&#x8A3B;&#x89E3;&#x7684;&#x8655;&#x7406; <code>^#</code></p>
+<pre><code class="lang-shell">$ grep -v &apos;^$&apos; /etc/rsyslog.conf | grep -v &apos;^#&apos;
+module(load=&quot;imuxsock&quot;) # provides support for local system logging
+module(load=&quot;imklog&quot; permitnonkernelfacility=&quot;on&quot;)
+$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
+$RepeatedMsgReduction on
+$FileOwner syslog
+$FileGroup adm
+$FileCreateMode 0640
+$DirCreateMode 0755
+$Umask 0022
+$PrivDropToUser syslog
+$PrivDropToGroup syslog
+$WorkDirectory /var/spool/rsyslog
+$IncludeConfig /etc/rsyslog.d/*.conf
+</code></pre>
+<h3 id="&#x7DF4;&#x7FD2;4&#xFF1A;&#x4EFB;&#x610F;&#x4E00;&#x5B57;&#x5143;--&#x8207;-&#x91CD;&#x8907;&#x5B57;&#x5143;-">&#x7DF4;&#x7FD2;4&#xFF1A;&#x4EFB;&#x610F;&#x4E00;&#x5B57;&#x5143; <code>.</code> &#x8207; &#x91CD;&#x8907;&#x5B57;&#x5143; <code>*</code></h3>
+<ul>
+<li><code>.</code> (&#x5C0F;&#x6578;&#x9EDE;)&#xFF1A;&#x4EE3;&#x8868;&#x300E;&#x4E00;&#x5B9A;&#x6709;&#x4E00;&#x500B;&#x4EFB;&#x610F;&#x5B57;&#x5143;&#x300F;&#x7684;&#x610F;&#x601D;</li>
+<li><code>*</code> (&#x661F;&#x661F;&#x865F;)&#xFF1A;&#x4EE3;&#x8868;&#x300E;&#x91CD;&#x8907;&#x524D;&#x4E00;&#x500B;&#x5B57;&#x5143;&#xFF0C; 0 &#x5230;&#x7121;&#x7AAE;&#x591A;&#x6B21;&#x300F;&#x7684;&#x610F;&#x601D;&#xFF0C;&#x70BA;&#x7D44;&#x5408;&#x5F62;&#x614B;</li>
+</ul>
+<h4 id="&#x9700;&#x8981;&#x627E;&#x51FA;-gd-&#x7684;&#x5B57;&#x5143;&#xFF0C;&#x8D77;&#x982D;&#x662F;-g-&#x800C;&#x7D50;&#x675F;&#x662F;-d">&#x9700;&#x8981;&#x627E;&#x51FA; g??d &#x7684;&#x5B57;&#x5143;&#xFF0C;&#x8D77;&#x982D;&#x662F; g &#x800C;&#x7D50;&#x675F;&#x662F; d</h4>
+<p>&#x53EA;&#x80FD;&#x6709;g??d 4&#x500B;&#x5B57;&#x5143;&#xFF0C;&#x4F7F;&#x7528; <code>.</code></p>
+<pre><code class="lang-shell">$ grep -n &apos;g..d&apos; regular_express.txt 
+1:&quot;Open Source&quot; is a good mechanism to develop programs.
+9:Oh! The soup taste good.
+16:The world &lt;Happy&gt; is the same with &quot;glad&quot;.
+</code></pre>
+<div style="
+border-radius: 10px;
+padding: 20px;
+background-color: #FFF6C8;
+color: black;
+margin-bottom: 15px;
+">
+
+&#x82E5;&#x53EA;&#x8981;&#x662F; gXXd &#x90FD;&#x53EF;&#xFF0C;&#x6CE8;&#x610F;&#xFF01;&#xFF01;&#xFF01;&#x4F7F;&#x7528; `*`&#x662F;&#x932F;&#x8AA4;&#x7684;&#xFF0C;&#x6703;&#x6709;&#x4EE5;&#x4E0B;&#x7D50;&#x679C;
+&#x6703;&#x9023;&#x53EA;&#x6709;g&#x958B;&#x982D;&#x7684;&#x6216;&#x662F;d&#x7D50;&#x5C3E;&#x4E5F;&#x5370;&#x51FA;&#x4F86;&#x4E86;
+
+```
+$ grep -n &apos;g**d&apos; regular_express.txt 
+1:&quot;Open Source&quot; is a good mechanism to develop programs.
+2:apple is my favorite food.
+4:this dress doesn&apos;t fit me.
+5:However, this dress is about $ 3183 dollars.
+9:Oh! The soup taste good.
+11:This window is clear.
+12:the symbol &apos;*&apos; is represented as start.
+13:Oh!    My god!
+14:The gd software is a library for drafting programs.
+16:The world <happy> is the same with &quot;glad&quot;.
+17:I like dog.
+18:google is the best tools for search keyword.
+21:# I am VBird
+```
+
+&#x6B63;&#x78BA;&#x7528;&#x6CD5;:  `&apos;g[a-zA-Z0-9]*d&apos;`
+
+```
+$ grep -n &apos;g[a-zA-Z0-9]*d&apos; regular_express.txt 
+1:&quot;Open Source&quot; is a good mechanism to develop programs.
+9:Oh! The soup taste good.
+13:Oh!    My god!
+14:The gd software is a library for drafting programs.
+16:The world <happy> is the same with &quot;glad&quot;.
+```
+</happy></happy></div>
+
+<h3 id="&#x7DF4;&#x7FD2;5&#xFF1A;&#x9650;&#x5B9A;&#x9023;&#x7E8C;re&#x5B57;&#x7B26;&#x7684;&#x7BC4;&#x570D;-">&#x7DF4;&#x7FD2;5&#xFF1A;&#x9650;&#x5B9A;&#x9023;&#x7E8C;RE&#x5B57;&#x7B26;&#x7684;&#x7BC4;&#x570D; {}</h3>
+<p>&#x5047;&#x8A2D;&#x8981;&#x627E;&#x51FA; 2~5&#x500B; o&#x7684;&#x9023;&#x7E8C;&#x5B57;&#x4E32;&#xFF0C;&#x4F7F;&#x7528;&#x9650;&#x5B9A;&#x7BC4;&#x570D;&#x7684;&#x5B57;&#x7B26; <code>{}</code></p>
+<p>&#x8A18;&#x5F97;&#x8981;&#x52A0;&#x4E0A;&#x53CD;&#x659C;&#x7DDA; <code>\{</code> <code>\}</code></p>
+<h4 id="&#x5047;&#x8A2D;&#x8981;&#x627E;&#x5230;-2&#x500B;o&#x7684;&#x5B57;&#x4E32;">&#x5047;&#x8A2D;&#x8981;&#x627E;&#x5230; 2&#x500B;o&#x7684;&#x5B57;&#x4E32;</h4>
+<pre><code class="lang-shell">$ grep -n &apos;o\{2,5\}&apos; regular_express.txt 
+1:&quot;Open Source&quot; is a good mechanism to develop programs.
+2:apple is my favorite food.
+3:Football game is not use feet only.
+9:Oh! The soup taste good.
+18:google is the best tools for search keyword.
+19:goooooogle yes!
+</code></pre>
+<h2 id="&#x57FA;&#x790E;&#x6B63;&#x898F;&#x8868;&#x793A;&#x6CD5;&#x5B57;&#x7B26;&#x5F59;&#x6574;">&#x57FA;&#x790E;&#x6B63;&#x898F;&#x8868;&#x793A;&#x6CD5;&#x5B57;&#x7B26;&#x5F59;&#x6574;</h2>
+<table>
+<thead>
+<tr>
+<th>RE</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^word</td>
+<td>&#x5F85;&#x641C;&#x5C0B;&#x7684;&#x5B57;&#x4E32;(word)&#x5728;&#x884C;&#x9996;</td>
+</tr>
+<tr>
+<td>word$</td>
+<td>&#x5F85;&#x641C;&#x5C0B;&#x7684;&#x5B57;&#x4E32;(word)&#x5728;&#x884C;&#x5C3E;</td>
+</tr>
+<tr>
+<td>.</td>
+<td>&#x4EE3;&#x8868;&#x300E;&#x4E00;&#x5B9A;&#x6709;&#x4E00;&#x500B;&#x4EFB;&#x610F;&#x5B57;&#x5143;&#x300F;&#x7684;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td>\</td>
+<td>&#x900F;&#x904E; shell &#x7684;&#x8DF3;&#x812B;&#x5B57;&#x7B26;&#xFF0C;&#x5C07;&#x7279;&#x6B8A;&#x7B26;&#x865F;&#x7684;&#x7279;&#x6B8A;&#x610F;&#x7FA9;&#x53BB;&#x9664;</td>
+</tr>
+<tr>
+<td>*</td>
+<td>&#x91CD;&#x8907;&#x96F6;&#x500B;&#x5230;&#x7121;&#x7AAE;&#x591A;&#x500B;&#x7684;&#x524D;&#x4E00;&#x500B; RE &#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td>[list]</td>
+<td>&#x5B57;&#x5143;&#x96C6;&#x5408;&#x7684; RE &#x5B57;&#x7B26;&#xFF0C;&#x88E1;&#x9762;&#x5217;&#x51FA;&#x60F3;&#x8981;&#x64F7;&#x53D6;&#x7684;&#x5B57;&#x5143;</td>
+</tr>
+<tr>
+<td>[n1-n2]</td>
+<td>&#x5B57;&#x5143;&#x96C6;&#x5408;&#x7684; RE &#x5B57;&#x7B26;&#xFF0C;&#x88E1;&#x9762;&#x5217;&#x51FA;&#x60F3;&#x8981;&#x64F7;&#x53D6;&#x7684;&#x5B57;&#x5143;&#x7BC4;&#x570D;</td>
+</tr>
+<tr>
+<td><sup><a href="#fn_list" id="reffn_list">list</a></sup></td>
+<td>&#x5B57;&#x5143;&#x96C6;&#x5408;&#x7684; RE &#x5B57;&#x7B26;&#xFF0C;&#x88E1;&#x9762;&#x5217;&#x51FA;&#x4E0D;&#x8981;&#x7684;&#x5B57;&#x4E32;&#x6216;&#x7BC4;&#x570D;</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>&#x9023;&#x7E8C; n &#x5230; m &#x500B;&#x7684;&#x300E;&#x524D;&#x4E00;&#x500B; RE &#x5B57;&#x7B26;&#x300F;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x8FF7;&#x601D;&#xFF1A;&#x300E;&#x6B63;&#x898F;&#x8868;&#x793A;&#x6CD5;&#x7684;&#x7279;&#x6B8A;&#x5B57;&#x5143;&#x300F;&#x8207;&#x4E00;&#x822C;&#x5728;&#x6307;&#x4EE4;&#x5217;&#x8F38;&#x5165;&#x6307;&#x4EE4;&#x7684;&#x300E;&#x842C;&#x7528;&#x5B57;&#x5143;&#x300F;&#x4E26;&#x4E0D;&#x76F8;&#x540C;&#xFF01;">&#x8FF7;&#x601D;&#xFF1A;&#x300E;&#x6B63;&#x898F;&#x8868;&#x793A;&#x6CD5;&#x7684;&#x7279;&#x6B8A;&#x5B57;&#x5143;&#x300F;&#x8207;&#x4E00;&#x822C;&#x5728;&#x6307;&#x4EE4;&#x5217;&#x8F38;&#x5165;&#x6307;&#x4EE4;&#x7684;&#x300E;&#x842C;&#x7528;&#x5B57;&#x5143;&#x300F;&#x4E26;&#x4E0D;&#x76F8;&#x540C;&#xFF01;</h2>
+<p>&#x5728;&#x842C;&#x7528;&#x5B57;&#x5143;&#x7576;&#x4E2D;&#x7684; * &#x4EE3;&#x8868;&#x7684;&#x662F;&#x300E; 0 ~ &#x7121;&#x9650;&#x591A;&#x500B;&#x5B57;&#x5143;&#x300F;&#x7684;&#x610F;&#x601D;</p>
+<blockquote>
+<p>ls &#x4E0D;&#x652F;&#x63F4; &#x6B63;&#x898F;&#x8868;&#x9054;&#x5F0F;, grep&#x6709;&#x652F;&#x63F4;</p>
+</blockquote>
+<pre><code>ls -l *   &#x5217;&#x51FA;&#x6240;&#x6709;&#x6A94;&#x540D;
+ls -l a*  &#x5217;&#x51FA;&#x4EE5;a&#x70BA;&#x958B;&#x982D;&#x7684;&#x6A94;&#x540D;
+</code></pre><p>&#x4F46;&#x662F;&#x5728;&#x6B63;&#x898F;&#x8868;&#x793A;&#x6CD5;&#x7576;&#x4E2D;&#xFF0C; * &#x5247;&#x662F;&#x300E;&#x91CD;&#x8907; 0 &#x5230;&#x7121;&#x7AAE;&#x591A;&#x500B;&#x7684;&#x524D;&#x4E00;&#x500B; RE &#x5B57;&#x7B26;&#x300F;&#x7684;&#x610F;&#x601D;</p>
+<pre><code>ls | grep -n &apos;^a.*&apos;   &#x5217;&#x51FA;&#x4EE5;a&#x70BA;&#x958B;&#x982D;&#x7684;&#x6A94;&#x540D;
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ch11.html" class="navigation navigation-prev " aria-label="Previous page: Ch.11 正規表示法與文件格式化處理">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ch11-2.html" class="navigation navigation-next " aria-label="Next page: 11.2 sed：以行為單位進行處理的工具">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"11.1 基礎正規表示法","level":"1.4.1","depth":2,"next":{"title":"11.2 sed：以行為單位進行處理的工具","level":"1.4.2","depth":2,"path":"ch11/ch11-2.md","ref":"ch11/ch11-2.md","articles":[]},"previous":{"title":"Ch.11 正規表示法與文件格式化處理","level":"1.4","depth":1,"path":"ch11/ch11.md","ref":"ch11/ch11.md","articles":[{"title":"11.1 基礎正規表示法","level":"1.4.1","depth":2,"path":"ch11/ch11-1.md","ref":"ch11/ch11-1.md","articles":[]},{"title":"11.2 sed：以行為單位進行處理的工具","level":"1.4.2","depth":2,"path":"ch11/ch11-2.md","ref":"ch11/ch11-2.md","articles":[]},{"title":"11.3 延伸正規表示法","level":"1.4.3","depth":2,"path":"ch11/ch11-3.md","ref":"ch11/ch11-3.md","articles":[]},{"title":"11.4 格式化列印 prinf","level":"1.4.4","depth":2,"path":"ch11/ch11-4.md","ref":"ch11/ch11-4.md","articles":[]},{"title":"11.5 awk: 資料處理工具","level":"1.4.5","depth":2,"path":"ch11/ch11-5.md","ref":"ch11/ch11-5.md","articles":[]},{"title":"11.6 diff, cmp, patch 檔案比對工具","level":"1.4.6","depth":2,"path":"ch11/ch11-6.md","ref":"ch11/ch11-6.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["disqus","intopic-toc","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"MessageBoard"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"內容綱要","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch11/ch11-1.md","mtime":"2020-10-24T10:13:46.210Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-24T10:09:06.800Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

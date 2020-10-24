@@ -1,0 +1,838 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>7.2 檔案系統操作 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ch7-3.html" />
+    
+    
+    <link rel="prev" href="ch7-1-3.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="ch7.html">
+            
+                <a href="ch7.html">
+            
+                    
+                    Ch.7 Linux檔案目錄、與磁碟格式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="ch7-1.html">
+            
+                <a href="ch7-1.html">
+            
+                    
+                    7.1 認識Linux檔案系統
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="ch7-1-3.html">
+            
+                <a href="ch7-1-3.html">
+            
+                    
+                    7.1.3 區塊群組(block group)的六個主要內容說明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2" data-path="ch7-3.html">
+            
+                <a href="ch7-3.html">
+            
+                    
+                    7.2 檔案系統操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="ch7-3.html">
+            
+                <a href="ch7-3.html">
+            
+                    
+                    7.3 磁碟的分割、格式化、檢驗與掛載
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="ch7-4.html">
+            
+                <a href="ch7-4.html">
+            
+                    
+                    7.4 設定開機掛載
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="ch7-5.html">
+            
+                <a href="ch7-5.html">
+            
+                    
+                    7.5 記憶體置換空間(swap)之建置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="ch7-6.html">
+            
+                <a href="ch7-6.html">
+            
+                    
+                    7.6 檔案系統的特殊觀察與操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../ch9/ch9.html">
+            
+                <a href="../ch9/ch9.html">
+            
+                    
+                    Ch.9 Vi與Vim編輯器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../ch9/ch9-2.html">
+            
+                <a href="../ch9/ch9-2.html">
+            
+                    
+                    9.2 vi 按鍵說明使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../ch9/ch9-3.html">
+            
+                <a href="../ch9/ch9-3.html">
+            
+                    
+                    9.3 vim 的進階功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../ch11/ch11.html">
+            
+                <a href="../ch11/ch11.html">
+            
+                    
+                    Ch.11 正規表示法與文件格式化處理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../ch11/ch11-1.html">
+            
+                <a href="../ch11/ch11-1.html">
+            
+                    
+                    11.1 基礎正規表示法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../ch11/ch11-2.html">
+            
+                <a href="../ch11/ch11-2.html">
+            
+                    
+                    11.2 sed：以行為單位進行處理的工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../ch11/ch11-3.html">
+            
+                <a href="../ch11/ch11-3.html">
+            
+                    
+                    11.3 延伸正規表示法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../ch11/ch11-4.html">
+            
+                <a href="../ch11/ch11-4.html">
+            
+                    
+                    11.4 格式化列印 prinf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../ch11/ch11-5.html">
+            
+                <a href="../ch11/ch11-5.html">
+            
+                    
+                    11.5 awk: 資料處理工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../ch11/ch11-6.html">
+            
+                <a href="../ch11/ch11-6.html">
+            
+                    
+                    11.6 diff, cmp, patch 檔案比對工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >7.2 檔案系統操作</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="73-&#x78C1;&#x789F;&#x7684;&#x5206;&#x5272;&#x3001;&#x683C;&#x5F0F;&#x5316;&#x3001;&#x6AA2;&#x9A57;&#x8207;&#x639B;&#x8F09;">7.3 &#x78C1;&#x789F;&#x7684;&#x5206;&#x5272;&#x3001;&#x683C;&#x5F0F;&#x5316;&#x3001;&#x6AA2;&#x9A57;&#x8207;&#x639B;&#x8F09;</h1>
+<p>&#x5728;&#x7CFB;&#x7D71;&#x88E1;&#x9762;&#x65B0;&#x589E;&#x4E00;&#x9846;&#x78C1;&#x789F;&#x6642;&#xFF0C;&#x9808;&#x4F5C;</p>
+<ol>
+<li>&#x5C0D;&#x78C1;&#x789F;&#x9032;&#x884C;&#x5206;&#x5272;&#xFF0C;&#x5EFA;&#x7ACB;&#x53EF;&#x7528;&#x7684;partition<ul>
+<li>&#x4F8B;&#x5982;&#x78C1;&#x789F;&#x5206;&#x5272;&#x69FD; (partition) &#x9700;&#x8981;&#x5B9A;&#x591A;&#x5927;&#xFF1F;</li>
+<li>&#x662F;&#x5426;&#x9700;&#x8981;&#x52A0;&#x5165; journal &#x7684;&#x529F;&#x80FD;&#xFF1F;</li>
+</ul>
+</li>
+<li>&#x5C0D;&#x8A72;partition&#x9032;&#x884C;&#x683C;&#x5F0F;&#x5316;&#xFF0C;&#x5EFA;&#x7ACB;&#x7CFB;&#x7D71;&#x53EF;&#x4EE5;&#x7528;&#x7684;file system<ul>
+<li>inode &#x8207; block &#x7684;&#x6578;&#x91CF;&#x61C9;&#x8A72;&#x5982;&#x4F55;&#x898F;&#x5283;&#x7B49;&#x7B49;&#x7684;&#x554F;&#x984C;&#x3002;</li>
+</ul>
+</li>
+<li>&#x5728;Linux&#x4E0A;&#xFF0C;&#x5EFA;&#x7ACB;&#x639B;&#x8F09;&#x9EDE;(&#x5373;&quot;&#x76EE;&#x9304;&quot;)&#xFF0C;&#x4E26;&#x639B;&#x8F09;&#x4E4B;</li>
+</ol>
+<h2 id="731-&#x89C0;&#x5BDF;&#x78C1;&#x789F;&#x5206;&#x5272;&#x72C0;&#x614B;">7.3.1 &#x89C0;&#x5BDF;&#x78C1;&#x789F;&#x5206;&#x5272;&#x72C0;&#x614B;</h2>
+<p>&#x76EE;&#x524D;&#x78C1;&#x789F;&#x5206;&#x5272;&#x4E3B;&#x8981;&#x6709; MBR &#x4EE5;&#x53CA; GPT &#x5169;&#x7A2E;&#x683C;&#x5F0F;</p>
+<h3 id="&#x6307;&#x4EE4;-lsblk">[&#x6307;&#x4EE4;] lsblk</h3>
+<p>&#x5217;&#x51FA;&#x7CFB;&#x7D71;&#x4E0A;&#x6240;&#x6709;&#x78C1;&#x789F;&#x5217;&#x8868;</p>
+<hr>
+<p>lsblk: list block device&#x7684;&#x7E2E;&#x5BEB;&#xFF0C;&#x5217;&#x51FA;&#x6240;&#x6709;&#x5132;&#x5B58;&#x88DD;&#x7F6E;&#x7684;&#x610F;&#x601D;</p>
+<p>lsblk [-dfimpt] [device]</p>
+<ul>
+<li>-d: &#x50C5;&#x5217;&#x51FA;&#x78C1;&#x789F;&#x672C;&#x8EAB;</li>
+<li>-f: &#x540C;&#x6642;&#x5217;&#x51FA;&#x8A72;&#x78C1;&#x789F;&#x5167;&#x7684;&#x6A94;&#x6848;&#x540D;&#x7A31;</li>
+<li>-i: &#x4F7F;&#x7528;ASCII&#x7684;&#x7DDA;&#x6BB5;&#x8F38;&#x51FA;&#xFF0C;&#x4E0D;&#x4F7F;&#x7528;&#x8907;&#x96DC;&#x7DE8;&#x78BC;</li>
+<li>-m: &#x540C;&#x6642;&#x8F38;&#x51FA;&#x8A72;&#x88DD;&#x7F6E;&#x5728; /dev &#x5E95;&#x4E0B;&#x7684;&#x6B0A;&#x9650;&#x8CC7;&#x6599; (rwx&#x7684;&#x8CC7;&#x6599;)</li>
+<li>-p: &#x5217;&#x51FA;&#x8A72;&#x88DD;&#x7F6E;&#x5B8C;&#x6574;&#x6A94;&#x540D;</li>
+<li>-t: &#x5217;&#x51FA;&#x8A73;&#x7D30;&#x8CC7;&#x6599; (Disk &#x5E8F;&#x5217;&#x6A5F;&#x5236;&#x3001;&#x9810;&#x5148;&#x8B80;&#x5BEB;&#x7684;&#x8CC7;&#x6599;&#x91CF;&#x5927;&#x5C0F;)</li>
+</ul>
+<p>&#x7BC4;&#x4F8B;&#xFF1A; &#x5217;&#x51FA;&#x7CFB;&#x7D71;&#x4E0B;&#x6240;&#x6709;&#x78C1;&#x789F;&#x8207;&#x78C1;&#x789F;&#x5167;&#x5206;&#x5272;&#x8CC7;&#x8A0A;</p>
+<pre><code>root@43735568f344:/# lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sr0     11:0    1   389M  0 rom
+sr1     11:1    1   110K  0 rom
+sr2     11:2    1 273.3M  0 rom
+vda    254:0    0  59.6G  0 disk
+`-vda1 254:1    0  59.6G  0 part /etc/hosts
+</code></pre><ul>
+<li>NAME&#xFF1A;&#x5C31;&#x662F;&#x88DD;&#x7F6E;&#x7684;&#x6A94;&#x540D;<ul>
+<li>&#x6703;&#x7701;&#x7565; /dev &#x7B49;&#x524D;&#x5C0E;&#x76EE;&#x9304;</li>
+</ul>
+</li>
+<li>MAJ:MIN&#xFF1A;&#x4E3B;&#x8981;&#xFF1A;&#x6B21;&#x8981;&#x88DD;&#x7F6E;&#x4EE3;&#x7F6E;&#x3002;<ul>
+<li>&#x6838;&#x5FC3;&#x8A8D;&#x8B58;&#x7684;&#x88DD;&#x7F6E;&#x90FD;&#x662F;&#x900F;&#x904E;&#x9019;&#x5169;&#x500B;&#x4EE3;&#x78BC;&#x4F86;&#x719F;&#x6089;</li>
+</ul>
+</li>
+<li>RM&#xFF1A;&#x662F;&#x5426;&#x70BA;&#x53EF;&#x5378;&#x8F09;&#x88DD;&#x7F6E; (removable device)&#xFF0C;&#x5982;&#x5149;&#x789F;&#x3001;USB &#x78C1;&#x789F;&#x7B49;&#x7B49;</li>
+<li>SIZE&#xFF1A;&#x5BB9;&#x91CF;</li>
+<li>RO&#xFF1A;&#x662F;&#x5426;&#x70BA;&#x552F;&#x8B80;&#x88DD;&#x7F6E;</li>
+<li>TYPE&#xFF1A;&#x662F;&#x78C1;&#x789F; (disk)&#x3001;&#x5206;&#x5272;&#x69FD; (partition) &#x9084;&#x662F;&#x552F;&#x8B80;&#x8A18;&#x61B6;&#x9AD4; (rom) &#x7B49;&#x8F38;&#x51FA;</li>
+<li>MOUTPOINT&#xFF1A;&#x639B;&#x8F09;&#x9EDE;</li>
+</ul>
+<h3 id="&#x6307;&#x4EE4;-blkid">[&#x6307;&#x4EE4;] blkid</h3>
+<p>&#x5217;&#x51FA;&#x88DD;&#x7F6E;&#x7684;UUID</p>
+<hr>
+<p>UUID &#x662F;&#x5168;&#x57DF;&#x55AE;&#x4E00;&#x8B58;&#x5225;&#x78BC; (universally unique identifier)&#xFF0C;Linux &#x6703;&#x5C07;&#x7CFB;&#x7D71;&#x5167;&#x6240;&#x6709;&#x7684;&#x88DD;&#x7F6E;&#x90FD;&#x7D66;&#x4E88;&#x4E00;&#x500B;&#x7368;&#x4E00;&#x7121;&#x4E8C;&#x7684;&#x8B58;&#x5225;&#x78BC;</p>
+<pre><code class="lang-shell=">[root@43735568f344 ~]# blkid
+/dev/vda2: UUID=&quot;94ac5f77-cb8a-495e-a65b-2ef7442b837c&quot; TYPE=&quot;xfs&quot; 
+/dev/vda3: UUID=&quot;WStYq1-P93d-oShM-JNe3-KeDl-bBf6-RSmfae&quot; TYPE=&quot;LVM2_member&quot;
+/dev/sda1: UUID=&quot;35BC-6D6B&quot; TYPE=&quot;vfat&quot;
+/dev/mapper/centos-root: UUID=&quot;299bdc5b-de6d-486a-a0d2-375402aaab27&quot; TYPE=&quot;xfs&quot;
+/dev/mapper/centos-swap: UUID=&quot;905dc471-6c10-4108-b376-a802edbd862d&quot; TYPE=&quot;swap&quot;
+/dev/mapper/centos-home: UUID=&quot;29979bf1-4a28-48e0-be4a-66329bf727d9&quot; TYPE=&quot;xfs&quot;
+</code></pre>
+<h3 id="&#x6307;&#x4EE4;-parted">[&#x6307;&#x4EE4;] parted</h3>
+<p>&#x5217;&#x51FA;&#x78C1;&#x789F;&#x7684;&#x5206;&#x5272;&#x8868;&#x985E;&#x578B;&#x8207;&#x5206;&#x5272;&#x8CC7;&#x8A0A;</p>
+<hr>
+<p>&#x5047;&#x8A2D;&#x8981;&#x5217;&#x51FA; /dev/vda &#x78C1;&#x789F;&#x7684;&#x76F8;&#x95DC;&#x8CC7;&#x6599;</p>
+<pre><code class="lang-shell=">[root@43735568f344 ~]# parted /dev/vda print
+Model: Virtio Block Device (virtblk)        # &#x78C1;&#x789F;&#x7684;&#x6A21;&#x7D44;&#x540D;&#x7A31;(&#x5EE0;&#x5546;)
+Disk /dev/vda: 42.9GB                       # &#x78C1;&#x789F;&#x7684;&#x7E3D;&#x5BB9;&#x91CF;
+Sector size (logical/physical): 512B/512B   # &#x78C1;&#x789F;&#x7684;&#x6BCF;&#x500B;&#x908F;&#x8F2F;/&#x7269;&#x7406;&#x78C1;&#x5340;&#x5BB9;&#x91CF;
+Partition Table: gpt                        # &#x5206;&#x5272;&#x8868;&#x7684;&#x683C;&#x5F0F; (MBR/GPT)
+Disk Flags: pmbr_boot
+
+Number  Start   End     Size    File system  Name  Flags      # &#x5E95;&#x4E0B;&#x624D;&#x662F;&#x5206;&#x5272;&#x8CC7;&#x6599;
+ 1      1049kB  3146kB  2097kB                     bios_grub
+ 2      3146kB  1077MB  1074MB  xfs
+ 3      1077MB  33.3GB  32.2GB                     lvm
+</code></pre>
+<h2 id="732-&#x78C1;&#x789F;&#x5206;&#x5272;&#xFF1A;-gdiskfdisk">7.3.2 &#x78C1;&#x789F;&#x5206;&#x5272;&#xFF1A; gdisk/fdisk</h2>
+<ul>
+<li>MBR &#x5206;&#x5272;&#x8868;&#x8ACB;&#x4F7F;&#x7528; fdisk &#x5206;&#x5272;</li>
+<li>GPT &#x5206;&#x5272;&#x8868;&#x8ACB;&#x4F7F;&#x7528; gdisk &#x5206;&#x5272;</li>
+</ul>
+<blockquote>
+<p>&#x8981;&#x900F;&#x904E; lsblk &#x6216; blkid &#x5148;&#x627E;&#x5230;&#x78C1;&#x789F;&#xFF0C;&#x518D;&#x7528; <code>parted /dev/xxx print</code> &#x4F86;&#x627E;&#x51FA;&#x5167;&#x90E8;&#x7684;&#x5206;&#x5272;&#x8868;&#x985E;&#x578B;&#xFF0C;&#x4E4B;&#x5F8C;&#x624D;&#x7528;gdisk &#x6216; fdisk &#x4F86;&#x64CD;&#x4F5C;&#x7CFB;&#x7D71;&#x3002;</p>
+</blockquote>
+<h3 id="&#x6307;&#x4EE4;-gdisk">[&#x6307;&#x4EE4;] gdisk</h3>
+<p>&#x7528;&#x4F86;&#x5206;&#x5272;GPT&#x985E;&#x578B;&#x78C1;&#x789F;&#x7684;&#x5206;&#x5272;&#x78C1;&#x789F;&#x69FD;&#x6307;&#x4EE4;&#x3002;</p>
+<p>&#x5148;&#x900F;&#x904E; <code>lsblk</code>&#xFF0C;&#x6703;&#x770B;&#x5230;&#x6709;&#x7CFB;&#x7D71;&#x53EB;&#x505A; <code>/dev/vda</code></p>
+<pre><code>root@43735568f344:/# lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sr0     11:0    1   389M  0 rom
+sr1     11:1    1   110K  0 rom
+sr2     11:2    1 273.3M  0 rom
+vda    254:0    0  59.6G  0 disk
+`-vda1 254:1    0  59.6G  0 part /etc/hosts
+</code></pre><p>&#x53EF;&#x5C0D; <code>/dev/vda</code> &#x9032;&#x884C;&#x5206;&#x5272;&#x52D5;&#x4F5C;&#xFF0C;&#x4F8B;&#x5982;<code>gdisk /dev/vda</code>&#xFF0C;&#x5373;&#x9032;&#x5165;&#x5206;&#x5272;&#x52D5;&#x4F5C;</p>
+<pre><code>GPT fdisk (gdisk) version X.X.X
+
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.  &lt;==&#x627E;&#x5230;&#x4E86; GPT &#x7684;&#x5206;&#x5272;&#x8868;&#xFF01;
+
+Command (? for help):  # &#x9019;&#x88E1;&#x53EF;&#x4EE5;&#x8B93;&#x4F60;&#x8F38;&#x5165;&#x6307;&#x4EE4;&#x52D5;&#x4F5C;&#xFF0C;&#x53EF;&#x4EE5;&#x6309;&#x554F;&#x865F; (?) &#x4F86;&#x67E5;&#x770B;&#x53EF;&#x7528;&#x6307;&#x4EE4;
+Command (? for help): ?
+b       back up GPT data to a file
+c       change a partition&apos;s name
+d       delete a partition           # &#x522A;&#x9664;&#x4E00;&#x500B;&#x5206;&#x5272;
+i       show detailed information on a partition
+l       list known partition types
+n       add a new partition          # &#x589E;&#x52A0;&#x4E00;&#x500B;&#x5206;&#x5272;
+o       create a new empty GUID partition table (GPT)
+p       print the partition table    # &#x5370;&#x51FA;&#x5206;&#x5272;&#x8868; (&#x5E38;&#x7528;)
+q       quit without saving changes  # &#x4E0D;&#x5132;&#x5B58;&#x5206;&#x5272;&#x5C31;&#x76F4;&#x63A5;&#x96E2;&#x958B; gdisk
+r       recovery and transformation options (experts only)
+s       sort partitions
+t       change a partition&apos;s type code
+v       verify disk
+w       write table to disk and exit # &#x5132;&#x5B58;&#x5206;&#x5272;&#x64CD;&#x4F5C;&#x5F8C;&#x96E2;&#x958B; gdisk
+x       extra functionality (experts only)
+?       print this menu
+Command (? for help):
+</code></pre><h4 id="&#x78C1;&#x789F;&#x7684;&#x5206;&#x5272;&#x8868;&#x8CC7;&#x8A0A;">&#x78C1;&#x789F;&#x7684;&#x5206;&#x5272;&#x8868;&#x8CC7;&#x8A0A;</h4>
+<p>&#x5728;<code>gdisk</code> &#x67D0;&#x9846;&#x78C1;&#x789F;&#x7684;&#x904E;&#x7A0B;&#x4E2D;&#x6309;&#x4E0B; <code>p</code>&#xFF0C;&#x53EF;&#x5448;&#x73FE;&#x78C1;&#x789F;&#x8CC7;&#x8A0A;</p>
+<ul>
+<li>Number<ul>
+<li>&#x5206;&#x5272;&#x69FD;&#x7DE8;&#x865F;&#xFF0C;1 &#x865F;&#x6307;&#x7684;&#x662F; /dev/vda1 &#x9019;&#x6A23;&#x8A08;&#x7B97;</li>
+</ul>
+</li>
+<li>Start (sector)<ul>
+<li>&#x6BCF;&#x4E00;&#x500B;&#x5206;&#x5272;&#x69FD;&#x7684;&#x958B;&#x59CB;&#x78C1;&#x5340;&#x865F;&#x78BC;&#x4F4D;&#x7F6E;</li>
+</ul>
+</li>
+<li>End (sector)<ul>
+<li>&#x6BCF;&#x4E00;&#x500B;&#x5206;&#x5272;&#x7684;&#x7D50;&#x675F;&#x78C1;&#x5340;&#x865F;&#x78BC;&#x4F4D;&#x7F6E;&#xFF0C;&#x8207; start &#x4E4B;&#x9593;&#x53EF;&#x4EE5;&#x7B97;&#x51FA;&#x5206;&#x5272;&#x69FD;&#x7684;&#x7E3D;&#x5BB9;&#x91CF;</li>
+</ul>
+</li>
+<li>Size<ul>
+<li>&#x5206;&#x5272;&#x69FD;&#x7684;&#x5BB9;&#x91CF;</li>
+</ul>
+</li>
+<li>Code<ul>
+<li>&#x5728;&#x5206;&#x5272;&#x69FD;&#x5167;&#x7684;&#x53EF;&#x80FD;&#x7684;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x985E;&#x578B;&#x3002;</li>
+</ul>
+</li>
+<li>Name<ul>
+<li>&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x540D;&#x7A31;&#x7B49;&#x7B49;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><code>gdisk</code> &#x53EA;&#x80FD;&#x7531; root &#x6B0A;&#x9650;&#x57F7;&#x884C;</p>
+</blockquote>
+<h4 id="&#x65B0;&#x589E;&#x6216;&#x522A;&#x9664;&#x5206;&#x5272;&#x69FD;">&#x65B0;&#x589E;&#x6216;&#x522A;&#x9664;&#x5206;&#x5272;&#x69FD;</h4>
+<ul>
+<li><code>n</code>: &#x65B0;&#x589E;<ul>
+<li>&#x53EF;&#x900F;&#x904E; +1G &#xFF0C;&#x76F4;&#x63A5;&#x65B0;&#x589E;1GB&#x7684;&#x5206;&#x5272;&#x69FD;&#x5927;&#x5C0F;</li>
+<li>&#x82E5;&#x6C92;&#x6307;&#x5B9A;&#x5247;&#x9810;&#x8A2D;&#x6703;&#x4F7F;&#x7528;&#x5168;&#x90E8;&#x7A7A;&#x9593;</li>
+</ul>
+</li>
+<li><code>d</code>: &#x522A;&#x9664;&#x5206;&#x5272;</li>
+</ul>
+<h4 id="&#x6307;&#x4EE4;-partprobe-&#x66F4;&#x65B0;linux&#x6838;&#x5FC3;&#x7684;&#x5206;&#x5272;&#x8868;&#x8CC7;&#x8A0A;">[&#x6307;&#x4EE4;] partprobe &#x66F4;&#x65B0;Linux&#x6838;&#x5FC3;&#x7684;&#x5206;&#x5272;&#x8868;&#x8CC7;&#x8A0A;</h4>
+<h3 id="&#x6307;&#x4EE4;-fdisk">[&#x6307;&#x4EE4;] fdisk</h3>
+<p>&#x5206;&#x5272;MBR&#xFF0C;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x8207;gdisk&#x4E00;&#x6A23;</p>
+<h2 id="733-&#x78C1;&#x789F;&#x683C;&#x5F0F;&#x5316;&#x5EFA;&#x7F6E;&#x6A94;&#x6848;&#x7CFB;&#x7D71;">7.3.3 &#x78C1;&#x789F;&#x683C;&#x5F0F;&#x5316;(&#x5EFA;&#x7F6E;&#x6A94;&#x6848;&#x7CFB;&#x7D71;)</h2>
+<p>&#x683C;&#x5F0F;&#x5316;&#xFF1A;&#x5EFA;&#x7F6E;&#x6A94;&#x6848;&#x7CFB;&#x7D71; (make filesystem)</p>
+<p>&#x4F8B;&#x5982;: mkfs(&#x6309;&#x4E0B;tab&#x986F;&#x793A;&#x5404;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x540D;&#x7A31;)</p>
+<pre><code>root@43735568f344:/# mkfs(&#x76F4;&#x63A5;&#x6309;tab&#xFF0C;&#x4E0D;&#x7528;&#x7A7A;&#x767D;)
+mkfs         mkfs.cramfs  mkfs.ext3    mkfs.minix
+mkfs.bfs     mkfs.ext2    mkfs.ext4
+</code></pre><h3 id="&#x6307;&#x4EE4;-mkfsxfs">[&#x6307;&#x4EE4;] mkfs.xfs</h3>
+<p>&#x5EFA;&#x7ACB;xfs&#x6A94;&#x6848;&#x7CFB;&#x7D71;</p>
+<p>&#x5C07;&#x5206;&#x5272;&#x51FA;&#x4F86;&#x7684; /dev/vda4 &#x683C;&#x5F0F;&#x5316;&#x70BA; xfs &#x6A94;&#x6848;&#x7CFB;&#x7D71;</p>
+<pre><code>mkfs.xfs /dev/vda4
+</code></pre><p>&#x900F;&#x904E; <code>blkid</code> &#x67E5;&#x770B;&#x683C;&#x5F0F;&#x5316;&#x5F8C;&#x8CC7;&#x8A0A;</p>
+<pre><code>blkid /dev/vda4
+/dev/vda4: UUID=&quot;39293f4f-627b-4dfd-a015-08340537709c&quot; TYPE=&quot;xfs&quot;
+</code></pre><h4 id="xfs&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x91DD;&#x5C0D;raid&#x7684;&#x6548;&#x80FD;&#x512A;&#x5316;">XFS&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x91DD;&#x5C0D;RAID&#x7684;&#x6548;&#x80FD;&#x512A;&#x5316;</h4>
+<p>&#x53EF;&#x900F;&#x904E;&#x5206;&#x5272;&#x6A94;&#x6848;&#x6210;&#x70BA;stripe&#x4E4B;&#x5F8C;&#xFF0C;&#x5C07;stripes&#x5206;&#x5225;&#x653E;&#x5230; &#x7531;&#x591A;&#x9846;&#x78C1;&#x789F;&#x7D44;&#x6210;&#x4E00;&#x9846;&#x5927;&#x78C1;&#x789F;&#x7684;RAID&#x5167;&#xFF0C;&#x900F;&#x904E;RAID&#x53EF;&#x540C;&#x6B65;&#x5BEB;&#x5165;&#x5230;&#x591A;&#x500B;&#x78C1;&#x789F;&#x7684;&#x6280;&#x8853;&#xFF0C;&#x52A0;&#x5FEB;&#x8B80;&#x5BEB;&#x7684;&#x901F;&#x5EA6;&#xFF0C;&#x4EA6;&#x6709;&#x5BB9;&#x932F;&#x7684;&#x4F5C;&#x7528; (&#x4E00;&#x9846;&#x786C;&#x789F;&#x58DE;&#x4E86;&#xFF0C;&#x5176;&#x4ED6;&#x78C1;&#x789F;&#x4F9D;&#x7136;&#x80FD;&#x904B;&#x4F5C;&#x597D;&#x597D;&#x7684;)</p>
+<p>&#x6709;&#x95DC;&#x6548;&#x80FD;&#x512A;&#x5316;&#x7684;&#x90E8;&#x5206;&#x53EF;&#x65BC; ch14 &#x9032;&#x968E;&#x6A94;&#x6848;&#x7CFB;&#x7D71; &#x67E5;&#x770B;</p>
+<h3 id="&#x6307;&#x4EE4;-mkfsext4">[&#x6307;&#x4EE4;] mkfs.ext4</h3>
+<p>&#x5EFA;&#x7ACB;ext4&#x7684;&#x6A94;&#x6848;&#x7CFB;&#x7D71;</p>
+<h2 id="734-&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x6AA2;&#x9A57;">7.3.4 &#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x6AA2;&#x9A57;</h2>
+<h3 id="&#x6307;&#x4EE4;-xfsrepair--fnd">[&#x6307;&#x4EE4;] xfs_repair <code>-fnd</code></h3>
+<p>&#x91DD;&#x5C0D;XFS&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x505A;&#x4FEE;&#x5FA9;</p>
+<ul>
+<li>-f: &#x8868;&#x793A;&#x6307;&#x5B9A;&#x7684;&#x88DD;&#x7F6E;&#x70BA;&#x6A94;&#x6848;&#xFF0C;&#x800C;&#x975E;&#x5BE6;&#x9AD4;&#x7684;&#x88DD;&#x7F6E;(USB, &#x5916;&#x63A5;&#x5F0F;disk)</li>
+<li>-n: &#x55AE;&#x7D14;&#x6AA2;&#x67E5;</li>
+<li>-d: &#x91DD;&#x5C0D;&#x6839;&#x76EE;&#x9304; <code>/</code>&#x9032;&#x884C;&#x6AA2;&#x67E5;&#x8207;&#x4FEE;&#x5FA9; (&#x5371;&#x96AA;&#x6307;&#x4EE4;&#xFF0C;
+&#x52FF;&#x96A8;&#x4FBF;&#x4F7F;&#x7528;)</li>
+</ul>
+<h3 id="&#x6307;&#x4EE4;-fsckext4--pf--b-superblock-&#x88DD;&#x7F6E;&#x540D;&#x7A31;">[&#x6307;&#x4EE4;] fsck.ext4 <code>-pf</code> <code>-b superblock</code> &#x88DD;&#x7F6E;&#x540D;&#x7A31;</h3>
+<p>&#x91DD;&#x5C0D;ext4 &#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x505A;&#x4FEE;&#x5FA9;</p>
+<ul>
+<li>-p: &#x7CFB;&#x7D71;&#x505A;&#x4FEE;&#x5FA9;&#x6642;&#xFF0C;&#x82E5;&#x6709;&#x8981;&#x56DE;&#x8986;yes&#x7684;&#x52D5;&#x4F5C;&#xFF0C;&#x81EA;&#x52D5;&#x56DE;yes</li>
+<li>-f: &#x5F37;&#x5236;&#x505A;&#x7D30;&#x90E8;&#x6AA2;&#x67E5;</li>
+<li>-D: &#x505A;&#x6700;&#x4F73;&#x5316;&#x914D;&#x7F6E;</li>
+<li>-b: &#x82E5;superblock&#x6709;&#x640D;&#x6BC0;&#xFF0C;&#x53EF;&#x7528;&#x5099;&#x4EFD;&#x7684;superblock&#x505A;&#x4FEE;&#x5FA9;</li>
+</ul>
+<h2 id="735-&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x639B;&#x8F09;&#x8207;&#x5378;&#x8F09;">7.3.5 &#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x639B;&#x8F09;&#x8207;&#x5378;&#x8F09;</h2>
+<p>&#x5C07;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x639B;&#x5230; &#x639B;&#x8F09;&#x9EDE;(&#x76EE;&#x9304;)&#x4E0A;&#xFF0C;&#x6216;&#x662F;&#x5378;&#x8F09;&#x4E4B;&#x3002;</p>
+<blockquote>
+<p>&#x639B;&#x8F09;&#x9EDE;&#x5C31;&#x662F;&#x500B;&#x76EE;&#x9304;&#xFF0C;&#x76EE;&#x9304;&#x70BA;&#x9032;&#x5165;&#x78C1;&#x789F;&#x5206;&#x5272;&#x69FD;&#x7684;&#x5165;&#x53E3;</p>
+</blockquote>
+<p>&#x639B;&#x8F09;&#x524D;&#x6CE8;&#x610F;&#x4E8B;&#x9805;</p>
+<ul>
+<li>&#x55AE;&#x4E00;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x4E0D;&#x61C9;&#x8A72;&#x88AB;&#x91CD;&#x8907;&#x639B;&#x8F09;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x639B;&#x8F09;&#x9EDE;(&#x76EE;&#x9304;)&#x4E2D;&#xFF1B;</li>
+<li>&#x55AE;&#x4E00;&#x76EE;&#x9304;&#x4E0D;&#x61C9;&#x8A72;&#x91CD;&#x8907;&#x639B;&#x8F09;&#x591A;&#x500B;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#xFF1B;</li>
+<li>&#x8981;&#x4F5C;&#x70BA;&#x639B;&#x8F09;&#x9EDE;&#x7684;&#x76EE;&#x9304;&#xFF0C;&#x7406;&#x8AD6;&#x4E0A;&#x61C9;&#x8A72;&#x90FD;&#x662F;&#x7A7A;&#x76EE;&#x9304;&#x624D;&#x662F;&#x3002;</li>
+</ul>
+<blockquote>
+<p>&#x82E5;&#x639B;&#x8F09;&#x5230;&#x5DF2;&#x7D93;&#x6709;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x76EE;&#x9304;&#xFF0C;&#x539F;&#x76EE;&#x9304;&#x7684;&#x6A94;&#x6848;&#x6703;&#x88AB;&#x96B1;&#x85CF;&#x6389;&#xFF0C;&#x5378;&#x8F09;&#x5F8C;&#x624D;&#x6703;&#x9084;&#x539F;&#x96B1;&#x85CF;&#x7684;&#x5167;&#x5BB9;</p>
+</blockquote>
+<h3 id="&#x6307;&#x4EE4;-mount--altno">[&#x6307;&#x4EE4;] mount <code>-altno</code></h3>
+<ul>
+<li>-a: &#x4F9D;&#x7167;&#x8A2D;&#x5B9A;&#x6A94; <code>/etc/fstab</code>&#x7684;&#x8CC7;&#x6599;&#x5C07;&#x6240;&#x6709;&#x5C1A;&#x672A;&#x639B;&#x8F09;&#x7684;&#x78C1;&#x789F;&#x90FD;&#x639B;&#x8F09;&#x4E0A;&#x4F86;</li>
+<li>-l: &#x53EF;&#x589E;&#x5217;Label&#x540D;&#x7A31;</li>
+<li><p>-t: &#x53EF;&#x4EE5;&#x52A0;&#x4E0A;&#x6307;&#x5B9A;&#x639B;&#x8F09;&#x7684;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7A2E;&#x985E;</p>
+<ul>
+<li>Linux: xfs, ext3, ext4</li>
+<li>&#x5149;&#x789F;&#x683C;&#x5F0F;: reiserfs, vfat, iso9660</li>
+<li>&#x7DB2;&#x8DEF;&#x6A94;&#x6848;&#x7CFB;&#x7D71;: nfs, cifs, smbfs</li>
+</ul>
+</li>
+<li><p>-n: &#x5728;&#x9810;&#x8A2D;&#x60C5;&#x6CC1;&#x4E0B;&#x6703;&#x5C07;&#x5BE6;&#x969B;&#x639B;&#x8F09;&#x60C5;&#x6CC1;&#x5BEB;&#x5165; <code>/etc/mtab</code>&#x4E2D;&#xFF0C;&#x4EE5;&#x5229;&#x5176;&#x5B83;&#x7A0B;&#x5F0F;&#x904B;&#x4F5C;&#xFF0C;&#x82E5;&#x8A2D;&#x7F6E;-n, &#x5C31;&#x4E0D;&#x5BEB;&#x5165;</p>
+</li>
+<li>-o: &#x6DFB;&#x589E;&#x5E33;&#x865F;&#x5BC6;&#x78BC;&#x3001;&#x8B80;&#x5BEB;&#x6B0A;&#x9650;</li>
+</ul>
+<blockquote>
+<p>&#x5728;CentOS 7&#x7CFB;&#x7D71;&#x4E2D;&#xFF0C;&#x4E0D;&#x7528;&#x81EA;&#x5DF1;&#x6DFB;&#x52A0; <code>-t</code> &#x5C31;&#x6703;&#x81EA;&#x52D5;&#x7684;&#x5206;&#x6790;&#x6700;&#x6070;&#x7576;&#x7684;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x4F86;&#x5617;&#x8A66;&#x639B;&#x8F09;&#x4F60;&#x9700;&#x8981;&#x7684;&#x88DD;&#x7F6E;</p>
+</blockquote>
+<h4 id="&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x9A45;&#x52D5;&#x7A0B;&#x5F0F;&#x4F4D;&#x7F6E;">&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x9A45;&#x52D5;&#x7A0B;&#x5F0F;&#x4F4D;&#x7F6E;</h4>
+<p>&#x653E;&#x7F6E;&#x65BC; <code>lib/modules/$(uname -r)/kernel/fs</code> &#x5167;</p>
+<h3 id="&#x6307;&#x4EE4;-remount-&#x91CD;&#x65B0;&#x639B;&#x8F09;">[&#x6307;&#x4EE4;] remount &#x91CD;&#x65B0;&#x639B;&#x8F09;</h3>
+<p>&#x901A;&#x5E38;&#x5728;&#x55AE;&#x4EBA;&#x7DAD;&#x8B77;&#x6A21;&#x5F0F;&#x6642;&#xFF0C;&#x6703;&#x4F7F;&#x7528; <code>mount -o remount,rw,auto /</code> &#xFF0C;&#x56E0;&#x70BA;&#x6839;&#x76EE;&#x9304;&#x5728;&#x6B64;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x5BB9;&#x6613;&#x88AB;&#x7CFB;&#x7D71;&#x639B;&#x8F09;&#x70BA;&#x552F;&#x7368;&#xFF0C;&#x6545;&#x53EF;&#x4EE5;&#x900F;&#x904E;&#x6B64;&#x6307;&#x4EE4;&#x76F4;&#x63A5;&#x91CD;&#x65B0;&#x639B;&#x8F09;</p>
+<blockquote>
+<p>&#x9CE5;&#x54E5;&#x6BD4;&#x8F03;&#x5EFA;&#x8B70;&#x4F7F;&#x7528; UUID &#x4F86;&#x8B58;&#x5225;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#xFF0C;&#x6703;&#x6BD4;&#x88DD;&#x7F6E;&#x540D;&#x7A31;&#x8207;&#x6A19;&#x982D;&#x540D;&#x7A31;&#x9084;&#x8981;&#x66F4;&#x53EF;&#x9760;&#xFF0C;&#x56E0;&#x70BA;&#x662F;&#x7368;&#x4E00;&#x7121;&#x4E8C;&#x3002;</p>
+</blockquote>
+<h3 id="&#x6307;&#x4EE4;-unmount--fln-&#x5C07;&#x88DD;&#x7F6E;&#x6A94;&#x6848;&#x5378;&#x8F09;">[&#x6307;&#x4EE4;] unmount <code>-fln</code> &#x5C07;&#x88DD;&#x7F6E;&#x6A94;&#x6848;&#x5378;&#x8F09;</h3>
+<ul>
+<li>-f: &#x5F37;&#x5236;&#x5378;&#x8F09;</li>
+<li>-l: &#x7ACB;&#x5373;&#x5378;&#x8F09;&#xFF0C;&#x6BD4; -f &#x9084;&#x5F37;</li>
+<li>-n: &#x4E0D;&#x66F4;&#x65B0; /etc/mtab &#x60C5;&#x6CC1;&#x4E0B;&#x5378;&#x8F09;</li>
+</ul>
+<blockquote>
+<p>&#x82E5;&#x9047;&#x5230;&#x7121;&#x6CD5;unmount&#x7684;&#x76EE;&#x9304;&#xFF0C;&#x8ACB; <code>cd /</code>&#x56DE;&#x5230;&#x6839;&#x76EE;&#x9304;</p>
+</blockquote>
+<h2 id="736-&#x78C1;&#x789F;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x53C3;&#x6578;&#x4FEE;&#x8A02;">7.3.6 &#x78C1;&#x789F;/&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x53C3;&#x6578;&#x4FEE;&#x8A02;</h2>
+<p>&#x6B32;&#x4FEE;&#x6539;&#x4E00;&#x4E0B;&#x76EE;&#x524D;&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x4E00;&#x4E9B;&#x76F8;&#x95DC;&#x8CC7;&#x8A0A;</p>
+<ul>
+<li>&#x4FEE;&#x6539; Label name &#xFF0C;&#x6216;&#x8005;&#x662F; journal &#x7684;&#x53C3;&#x6578;</li>
+<li>&#x5176;&#x4ED6;&#x78C1;&#x789F;/&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x904B;&#x4F5C;&#x6642;&#x7684;&#x76F8;&#x95DC;&#x53C3;&#x6578; (&#x4F8B;&#x5982; DMA &#x555F;&#x52D5;&#x8207;&#x5426;)</li>
+</ul>
+<h3 id="&#x6307;&#x4EE4;-mknod--bcp-major-minor">[&#x6307;&#x4EE4;] mknod <code>-bcp</code> (major) (minor)</h3>
+<p>&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x53C3;&#x6578;&#x66F4;&#x6539;</p>
+<ul>
+<li>-b: &#x8A2D;&#x5B9A;&#x88DD;&#x7F6E;&#x540D;&#x7A31;&#x6210;&#x70BA;&#x4E00;&#x500B;&#x5468;&#x908A;&#x5132;&#x5B58;&#x8A2D;&#x5099;&#x6A94;&#x6848;&#xFF0C;&#x4F8B;&#x5982;&#x78C1;&#x789F;&#x7B49;</li>
+<li>-c: &#x8A2D;&#x5B9A;&#x88DD;&#x7F6E;&#x540D;&#x7A31;&#x6210;&#x70BA;&#x4E00;&#x500B;&#x5468;&#x908A;&#x8F38;&#x5165;&#x8A2D;&#x5099;&#x6A94;&#x6848;&#xFF0C;&#x4F8B;&#x5982;&#x6ED1;&#x9F20;/&#x9375;&#x76E4;&#x7B49;</li>
+<li><p>-p: &#x8A2D;&#x5B9A;&#x88DD;&#x7F6E;&#x540D;&#x7A31;&#x6210;&#x70BA;&#x4E00;&#x500B; FIFO &#x6A94;&#x6848;</p>
+</li>
+<li><p>major: &#x4E3B;&#x8981;&#x88DD;&#x7F6E;&#x4EE3;&#x78BC;</p>
+</li>
+<li><p>minor: &#x6B21;&#x8981;&#x88DD;&#x7F6E;&#x4EE3;&#x78BC;</p>
+</li>
+</ul>
+<h4 id="&#x5E38;&#x898B;&#x7684;&#x78C1;&#x789F;&#x6A94;&#x540D;-devsda-&#x8207;-devloop0-&#x4EE3;&#x78BC;">&#x5E38;&#x898B;&#x7684;&#x78C1;&#x789F;&#x6A94;&#x540D; <code>/dev/sda</code> &#x8207; <code>/dev/loop0</code> &#x4EE3;&#x78BC;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x78C1;&#x789F;&#x6A94;&#x540D;</th>
+<th>Major</th>
+<th>Minor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/dev/sda</td>
+<td>8</td>
+<td>0-15</td>
+</tr>
+<tr>
+<td>/dev/sdb</td>
+<td>8</td>
+<td>16-31</td>
+</tr>
+<tr>
+<td>/dev/loop0</td>
+<td>7</td>
+<td>0</td>
+</tr>
+<tr>
+<td>/dev/loop1</td>
+<td>7</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="&#x6307;&#x4EE4;-xfsadmin--lu--l-label--u-uuid-&#x88DD;&#x7F6E;&#x6A94;&#x540D;">[&#x6307;&#x4EE4;] xfs_admin <code>-lu</code> <code>-L label</code> <code>-U uuid</code> &#x88DD;&#x7F6E;&#x6A94;&#x540D;</h3>
+<p>&#x4FEE;&#x6539; xfs &#x7684; label name&#x8207;UUID</p>
+<ul>
+<li>-l: &#x5217;&#x51FA;&#x9019;&#x500B;&#x88DD;&#x7F6E;&#x7684; label name</li>
+<li>-u: &#x5217;&#x51FA;&#x9019;&#x500B;&#x88DD;&#x7F6E;&#x7684; UUID</li>
+<li>-L: &#x8A2D;&#x5B9A;&#x9019;&#x500B;&#x88DD;&#x7F6E;&#x7684; Label name</li>
+<li>-U: &#x8A2D;&#x5B9A;&#x9019;&#x500B;&#x88DD;&#x7F6E;&#x7684; UUID</li>
+</ul>
+<h3 id="&#x6307;&#x4EE4;-tune2fs--l--l-label--u-uuid">[&#x6307;&#x4EE4;] tune2fs <code>-l</code> <code>-L Label</code> <code>-U uuid</code></h3>
+<p>&#x4FEE;&#x6539; ext4 &#x7684; label name &#x8207; UUID</p>
+<ul>
+<li>-l: &#x985E;&#x4F3C; dumpe2fs -h &#x7684;&#x529F;&#x80FD;, &#x5C07; superblock &#x5167;&#x7684;&#x8CC7;&#x6599;&#x8B80;&#x51FA;&#x4F86;</li>
+<li>-L: &#x4FEE;&#x6539; LABEL name</li>
+<li>-U: &#x4FEE;&#x6539; UUID</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ch7-1-3.html" class="navigation navigation-prev " aria-label="Previous page: 7.1.3 區塊群組(block group)的六個主要內容說明">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ch7-3.html" class="navigation navigation-next " aria-label="Next page: 7.3 磁碟的分割、格式化、檢驗與掛載">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"7.2 檔案系統操作","level":"1.2.2","depth":2,"next":{"title":"7.3 磁碟的分割、格式化、檢驗與掛載","level":"1.2.3","depth":2,"path":"ch7/ch7-3.md","ref":"ch7/ch7-3.md","articles":[]},"previous":{"title":"7.1.3 區塊群組(block group)的六個主要內容說明","level":"1.2.1.1","depth":3,"path":"ch7/ch7-1-3.md","ref":"ch7/ch7-1-3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["disqus","intopic-toc","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"MessageBoard"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"內容綱要","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch7/ch7-3.md","mtime":"2020-10-10T12:02:44.297Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-24T10:09:06.800Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

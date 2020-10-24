@@ -1,0 +1,549 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>7.6 檔案系統的特殊觀察與操作 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../ch9/ch9.html" />
+    
+    
+    <link rel="prev" href="ch7-5.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="ch7.html">
+            
+                <a href="ch7.html">
+            
+                    
+                    Ch.7 Linux檔案目錄、與磁碟格式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="ch7-1.html">
+            
+                <a href="ch7-1.html">
+            
+                    
+                    7.1 認識Linux檔案系統
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="ch7-1-3.html">
+            
+                <a href="ch7-1-3.html">
+            
+                    
+                    7.1.3 區塊群組(block group)的六個主要內容說明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="ch7-3.html">
+            
+                <a href="ch7-3.html">
+            
+                    
+                    7.2 檔案系統操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="ch7-3.html">
+            
+                <a href="ch7-3.html">
+            
+                    
+                    7.3 磁碟的分割、格式化、檢驗與掛載
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="ch7-4.html">
+            
+                <a href="ch7-4.html">
+            
+                    
+                    7.4 設定開機掛載
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="ch7-5.html">
+            
+                <a href="ch7-5.html">
+            
+                    
+                    7.5 記憶體置換空間(swap)之建置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.6" data-path="ch7-6.html">
+            
+                <a href="ch7-6.html">
+            
+                    
+                    7.6 檔案系統的特殊觀察與操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../ch9/ch9.html">
+            
+                <a href="../ch9/ch9.html">
+            
+                    
+                    Ch.9 Vi與Vim編輯器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../ch9/ch9-2.html">
+            
+                <a href="../ch9/ch9-2.html">
+            
+                    
+                    9.2 vi 按鍵說明使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../ch9/ch9-3.html">
+            
+                <a href="../ch9/ch9-3.html">
+            
+                    
+                    9.3 vim 的進階功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../ch11/ch11.html">
+            
+                <a href="../ch11/ch11.html">
+            
+                    
+                    Ch.11 正規表示法與文件格式化處理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../ch11/ch11-1.html">
+            
+                <a href="../ch11/ch11-1.html">
+            
+                    
+                    11.1 基礎正規表示法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../ch11/ch11-2.html">
+            
+                <a href="../ch11/ch11-2.html">
+            
+                    
+                    11.2 sed：以行為單位進行處理的工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../ch11/ch11-3.html">
+            
+                <a href="../ch11/ch11-3.html">
+            
+                    
+                    11.3 延伸正規表示法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../ch11/ch11-4.html">
+            
+                <a href="../ch11/ch11-4.html">
+            
+                    
+                    11.4 格式化列印 prinf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../ch11/ch11-5.html">
+            
+                <a href="../ch11/ch11-5.html">
+            
+                    
+                    11.5 awk: 資料處理工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../ch11/ch11-6.html">
+            
+                <a href="../ch11/ch11-6.html">
+            
+                    
+                    11.6 diff, cmp, patch 檔案比對工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >7.6 檔案系統的特殊觀察與操作</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="76-&#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x7279;&#x6B8A;&#x89C0;&#x5BDF;&#x8207;&#x64CD;&#x4F5C;">7.6 &#x6A94;&#x6848;&#x7CFB;&#x7D71;&#x7684;&#x7279;&#x6B8A;&#x89C0;&#x5BDF;&#x8207;&#x64CD;&#x4F5C;</h1>
+<h2 id="761-&#x78C1;&#x789F;&#x7A7A;&#x9593;&#x4E4B;&#x6D6A;&#x8CBB;&#x554F;&#x984C;">7.6.1 &#x78C1;&#x789F;&#x7A7A;&#x9593;&#x4E4B;&#x6D6A;&#x8CBB;&#x554F;&#x984C;</h2>
+<p>&#x7531;&#x65BC;&#x4E00;&#x500B;block&#x53EA;&#x80FD;&#x653E;&#x7F6E;&#x4E00;&#x500B;&#x6A94;&#x6848;&#xFF0C;&#x82E5;&#x6709;&#x592A;&#x591A;&#x5C0F;&#x6A94;&#x6848;&#xFF0C;&#x6BCF;&#x500B;&#x5C0F;&#x6A94;&#x6848;&#x90FD;&#x6C92;&#x6709;&#x5B8C;&#x5168;&#x586B;&#x6EFF;&#x4E00;&#x500B;block, &#x5247;&#x6703;&#x6D6A;&#x8CBB;&#x8A31;&#x591A;&#x78C1;&#x789F;&#x7A7A;&#x9593;</p>
+<p>&#x900F;&#x904E; <code>ll</code> &#x6216; <code>ls -l</code>&#xFF0C;&#x7B2C;&#x4E00;&#x884C;&#x6703;&#x51FA;&#x73FE; <code>total 260K</code> &#x4EE3;&#x8868;&#x8A72;&#x76EE;&#x9304;&#x4E0B;&#x6240;&#x6709;&#x8CC7;&#x6599;&#x6240;&#x8017;&#x7528;&#x7684; <code>&#x5BE6;&#x969B;block&#x6578;&#x91CF; * block&#x5927;&#x5C0F;</code>&#x7684;&#x503C;</p>
+<p>&#x53EF;&#x770B;&#x5230;&#x4E0B;&#x5217;&#x7B2C;&#x4E09;&#x500B;&#x6A94;&#x6848; <code>alternatives.log</code> &#x6C92;&#x6709;&#x5B8C;&#x5168;&#x7528;&#x6EFF;&#x4E00;&#x500B;block&#x5927;&#x5C0F;</p>
+<pre><code>root@43735568f344:/var/log# ll -sh
+total 260K
+4.0K drwxr-xr-x 3 root root 4.0K Sep 25 01:20 ./
+4.0K drwxr-xr-x 1 root root 4.0K Sep 25 01:23 ../
+
+# block&#x5927;&#x5C0F;&#x70BA;4k, &#x4F46;&#x8A72;&#x6A94;&#x6848;&#x53EA;&#x7528;&#x4E86;3.4k
+4.0K -rw-r--r-- 1 root root 3.4K Sep 25 01:23 alternatives.log
+
+4.0K drwxr-xr-x 2 root root 4.0K Sep 25 01:23 apt/
+ 60K -rw-r--r-- 1 root root  58K Sep 25 01:20 bootstrap.log
+   0 -rw-rw---- 1 root utmp    0 Sep 25 01:20 btmp
+148K -rw-r--r-- 1 root root 147K Sep 25 01:23 dpkg.log
+4.0K -rw-r--r-- 1 root root 3.2K Sep 25 01:20 faillog
+ 32K -rw-rw-r-- 1 root utmp  29K Sep 25 01:20 lastlog
+   0 -rw-rw-r-- 1 root utmp    0 Sep 25 01:20 wtmp
+</code></pre><h2 id="762-&#x5229;&#x7528;-gnu-&#x7684;-parted-&#x9032;&#x884C;&#x5206;&#x5272;&#x884C;&#x70BA;optional">7.6.2 &#x5229;&#x7528; GNU &#x7684; parted &#x9032;&#x884C;&#x5206;&#x5272;&#x884C;&#x70BA;(Optional)</h2>
+<ul>
+<li><p><code>parted</code> &#x53EF;&#x540C;&#x6642;&#x652F;&#x63F4; GPT&#x8207;MBR&#x7684;&#x5206;&#x5272;</p>
+<ul>
+<li>gdisk&#x53EA;&#x80FD;&#x7528;&#x5728;GPT, fdisk&#x53EA;&#x80FD;&#x7528;&#x5728;MBR</li>
+</ul>
+</li>
+<li><p>&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x4E00;&#x884C;&#x6307;&#x4EE4;&#x5217;&#x5C31;&#x5B8C;&#x6210;&#x5206;&#x5272;</p>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ch7-5.html" class="navigation navigation-prev " aria-label="Previous page: 7.5 記憶體置換空間(swap)之建置">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../ch9/ch9.html" class="navigation navigation-next " aria-label="Next page: Ch.9 Vi與Vim編輯器">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"7.6 檔案系統的特殊觀察與操作","level":"1.2.6","depth":2,"next":{"title":"Ch.9 Vi與Vim編輯器","level":"1.3","depth":1,"path":"ch9/ch9.md","ref":"ch9/ch9.md","articles":[{"title":"9.2 vi 按鍵說明使用","level":"1.3.1","depth":2,"path":"ch9/ch9-2.md","ref":"ch9/ch9-2.md","articles":[]},{"title":"9.3 vim 的進階功能","level":"1.3.2","depth":2,"path":"ch9/ch9-3.md","ref":"ch9/ch9-3.md","articles":[]}]},"previous":{"title":"7.5 記憶體置換空間(swap)之建置","level":"1.2.5","depth":2,"path":"ch7/ch7-5.md","ref":"ch7/ch7-5.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["disqus","intopic-toc","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"MessageBoard"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"內容綱要","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch7/ch7-6.md","mtime":"2020-10-10T13:42:59.621Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-24T10:09:06.800Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

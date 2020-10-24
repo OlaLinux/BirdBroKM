@@ -1,0 +1,712 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>11.2 sed：以行為單位進行處理的工具 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ch11-3.html" />
+    
+    
+    <link rel="prev" href="ch11-1.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../ch7/ch7.html">
+            
+                <a href="../ch7/ch7.html">
+            
+                    
+                    Ch.7 Linux檔案目錄、與磁碟格式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../ch7/ch7-1.html">
+            
+                <a href="../ch7/ch7-1.html">
+            
+                    
+                    7.1 認識Linux檔案系統
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../ch7/ch7-1-3.html">
+            
+                <a href="../ch7/ch7-1-3.html">
+            
+                    
+                    7.1.3 區塊群組(block group)的六個主要內容說明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../ch7/ch7-3.html">
+            
+                <a href="../ch7/ch7-3.html">
+            
+                    
+                    7.2 檔案系統操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../ch7/ch7-3.html">
+            
+                <a href="../ch7/ch7-3.html">
+            
+                    
+                    7.3 磁碟的分割、格式化、檢驗與掛載
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../ch7/ch7-4.html">
+            
+                <a href="../ch7/ch7-4.html">
+            
+                    
+                    7.4 設定開機掛載
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../ch7/ch7-5.html">
+            
+                <a href="../ch7/ch7-5.html">
+            
+                    
+                    7.5 記憶體置換空間(swap)之建置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../ch7/ch7-6.html">
+            
+                <a href="../ch7/ch7-6.html">
+            
+                    
+                    7.6 檔案系統的特殊觀察與操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../ch9/ch9.html">
+            
+                <a href="../ch9/ch9.html">
+            
+                    
+                    Ch.9 Vi與Vim編輯器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../ch9/ch9-2.html">
+            
+                <a href="../ch9/ch9-2.html">
+            
+                    
+                    9.2 vi 按鍵說明使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../ch9/ch9-3.html">
+            
+                <a href="../ch9/ch9-3.html">
+            
+                    
+                    9.3 vim 的進階功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="ch11.html">
+            
+                <a href="ch11.html">
+            
+                    
+                    Ch.11 正規表示法與文件格式化處理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="ch11-1.html">
+            
+                <a href="ch11-1.html">
+            
+                    
+                    11.1 基礎正規表示法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.2" data-path="ch11-2.html">
+            
+                <a href="ch11-2.html">
+            
+                    
+                    11.2 sed：以行為單位進行處理的工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="ch11-3.html">
+            
+                <a href="ch11-3.html">
+            
+                    
+                    11.3 延伸正規表示法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="ch11-4.html">
+            
+                <a href="ch11-4.html">
+            
+                    
+                    11.4 格式化列印 prinf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="ch11-5.html">
+            
+                <a href="ch11-5.html">
+            
+                    
+                    11.5 awk: 資料處理工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="ch11-6.html">
+            
+                <a href="ch11-6.html">
+            
+                    
+                    11.6 diff, cmp, patch 檔案比對工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >11.2 sed：以行為單位進行處理的工具</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="112-sed&#xFF1A;&#x4EE5;&#x884C;&#x70BA;&#x55AE;&#x4F4D;&#x9032;&#x884C;&#x8655;&#x7406;&#x7684;&#x5DE5;&#x5177;">11.2 sed&#xFF1A;&#x4EE5;&#x884C;&#x70BA;&#x55AE;&#x4F4D;&#x9032;&#x884C;&#x8655;&#x7406;&#x7684;&#x5DE5;&#x5177;</h1>
+<p>sed&#x672C;&#x8EAB;&#x662F;&#x7BA1;&#x7DDA;&#x547D;&#x4EE4;&#xFF0C;&#x53EF;&#x4EE5;&#x5206;&#x6790;standard output&#x3002;</p>
+<p>&#x5C07;&#x8CC7;&#x6599;&#x9032;&#x884C;&#x53D6;&#x4EE3;&#x3001;&#x522A;&#x9664;&#x3001;&#x65B0;&#x589E;&#x3001;&#x64F7;&#x53D6;&#x7279;&#x5B9A;Column</p>
+<h2 id="&#x7528;&#x6CD5;">&#x7528;&#x6CD5;</h2>
+<pre><code>sed [&#x6307;&#x4EE4;] [&#x52D5;&#x4F5C;]
+</code></pre><h3 id="&#x6307;&#x4EE4;">&#x6307;&#x4EE4;</h3>
+<pre><code>-n  &#xFF1A;&#x4F7F;&#x7528;&#x5B89;&#x975C;(silent)&#x6A21;&#x5F0F;&#x3002;&#x53EA;&#x6709;&#x7D93;&#x904E; sed &#x7279;&#x6B8A;&#x8655;&#x7406;&#x7684;&#x90A3;&#x4E00;&#x884C;(&#x6216;&#x8005;&#x52D5;&#x4F5C;)&#x624D;&#x6703;&#x88AB;&#x5217;&#x51FA;&#x4F86;&#x3002;
+-e  &#xFF1A;&#x76F4;&#x63A5;&#x5728;&#x6307;&#x4EE4;&#x5217;&#x6A21;&#x5F0F;&#x4E0A;&#x9032;&#x884C; sed &#x7684;&#x52D5;&#x4F5C;&#x7DE8;&#x8F2F;
+-f filename &#xFF1A;&#x76F4;&#x63A5;&#x5C07; sed &#x7684;&#x52D5;&#x4F5C;&#x5BEB;&#x5728;&#x4E00;&#x500B;&#x6A94;&#x6848;&#x5167;
+-r  &#xFF1A;sed &#x7684;&#x52D5;&#x4F5C;&#x652F;&#x63F4;&#x7684;&#x662F;&#x5EF6;&#x4F38;&#x578B;&#x6B63;&#x898F;&#x8868;&#x793A;&#x6CD5;&#x7684;&#x8A9E;&#x6CD5;
+-i  &#xFF1A;&#x76F4;&#x63A5;&#x4FEE;&#x6539;&#x8B80;&#x53D6;&#x7684;&#x6A94;&#x6848;&#x5167;&#x5BB9;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7531;&#x87A2;&#x5E55;&#x8F38;&#x51FA;
+</code></pre><h3 id="&#x52D5;&#x4F5C;">&#x52D5;&#x4F5C;</h3>
+<pre><code>[n1,n2]function
+</code></pre><p>n1&#x8207;n2&#x662F;&#x9078;&#x64C7;&#x9032;&#x884C;&#x52D5;&#x4F5C;&#x7684;&#x884C;&#x6578;&#xFF0C;&#x82E5;&#x8981;&#x5728;10&#x5230;20&#x884C;&#x505A;&#x8655;&#x7406;:  10,20[&#x52D5;&#x4F5C;&#x884C;&#x70BA;]</p>
+<p>&#x53EF;&#x57F7;&#x884C;&#x52D5;&#x4F5C;</p>
+<pre><code>a   &#xFF1A;&#x65B0;&#x589E;&#xFF0C; a &#x7684;&#x5F8C;&#x9762;&#x53EF;&#x4EE5;&#x63A5;&#x5B57;&#x4E32;&#xFF0C;&#x800C;&#x9019;&#x4E9B;&#x5B57;&#x4E32;&#x6703;&#x5728;&#x65B0;&#x7684;&#x4E00;&#x884C;&#x51FA;&#x73FE;(&#x76EE;&#x524D;&#x7684;&#x4E0B;&#x4E00;&#x884C;)
+c   &#xFF1A;&#x53D6;&#x4EE3;&#xFF0C; c &#x7684;&#x5F8C;&#x9762;&#x53EF;&#x4EE5;&#x63A5;&#x5B57;&#x4E32;&#xFF0C;&#x9019;&#x4E9B;&#x5B57;&#x4E32;&#x53EF;&#x4EE5;&#x53D6;&#x4EE3; n1,n2 &#x4E4B;&#x9593;&#x7684;column
+d   &#xFF1A;&#x522A;&#x9664;
+i   &#xFF1A;&#x63D2;&#x5165;&#xFF0C; i &#x7684;&#x5F8C;&#x9762;&#x53EF;&#x4EE5;&#x63A5;&#x5B57;&#x4E32;&#xFF0C;&#x800C;&#x9019;&#x4E9B;&#x5B57;&#x4E32;&#x6703;&#x5728;&#x65B0;&#x7684;&#x4E00;&#x884C;&#x51FA;&#x73FE;(&#x76EE;&#x524D;&#x7684;&#x4E0A;&#x4E00;&#x884C;)
+p   &#xFF1A;&#x5217;&#x5370;&#xFF0C;&#x4EA6;&#x5373;&#x5C07;&#x67D0;&#x500B;&#x9078;&#x64C7;&#x7684;&#x8CC7;&#x6599;&#x5370;&#x51FA;&#x3002;&#x901A;&#x5E38; p &#x6703;&#x8207;&#x53C3;&#x6578; sed -n &#x4E00;&#x8D77;&#x904B;&#x4F5C;
+s   &#xFF1A;&#x53D6;&#x4EE3;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x9032;&#x884C;&#x53D6;&#x4EE3;&#x7684;&#x5DE5;&#x4F5C;&#x3002;&#x53EF;&#x4EE5;&#x642D;&#x914D;&#x6B63;&#x898F;&#x8868;&#x793A;&#x6CD5;&#xFF0C;&#x4F8B;&#x5982; 1,20s/old/new/g
+</code></pre><h2 id="&#x7BC4;&#x4F8B;">&#x7BC4;&#x4F8B;</h2>
+<h3 id="&#x4EE5;&#x884C;&#x70BA;&#x55AE;&#x4F4D;&#x7684;&#x522A;&#x9664;">&#x4EE5;&#x884C;&#x70BA;&#x55AE;&#x4F4D;&#x7684;&#x522A;&#x9664;</h3>
+<p>&#x5047;&#x5982;&#x8981;&#x522A;&#x9664;&#x7B2C;2&#x5230;5&#x5217;&#x7684;&#x986F;&#x793A;</p>
+<pre><code class="lang-shell">$ nl regular_express.txt | sed &apos;2,5d&apos;
+     1    &quot;Open Source&quot; is a good mechanism to develop programs.
+     6    GNU is free air not free beer.
+     7    Her hair is very beauty.
+     8    I can&apos;t finish the test.
+     9    Oh! The soup taste good.
+</code></pre>
+<p>&#x5047;&#x5982;&#x8981;&#x522A;&#x9664;&#x7B2C;2&#x5217;</p>
+<pre><code class="lang-shell">$ nl regular_express.txt | sed &apos;2d&apos;
+     1    &quot;Open Source&quot; is a good mechanism to develop programs.
+     3    Football game is not use feet only.
+     4    this dress doesn&apos;t fit me.
+     5    However, this dress is about $ 3183 dollars.
+     6    GNU is free air not free beer.
+     7    Her hair is very beauty.
+     8    I can&apos;t finish the test.
+     9    Oh! The soup taste good.
+    10    motorcycle is cheap than car.
+    11    This window is clear.
+    12    the symbol &apos;*&apos; is represented as start.
+    13    Oh!    My god!
+    14    The gd software is a library for drafting programs.
+    15    You are the best is mean you are the no. 1.
+    16    The world &lt;Happy&gt; is the same with &quot;glad&quot;.
+    17    I like dog.
+    18    google is the best tools for search keyword.
+    19    goooooogle yes!
+    20    go! go! Let&apos;s go.
+    21    # I am VBird
+</code></pre>
+<p>&#x5047;&#x5982;&#x8981;&#x522A;&#x9664;&#x7B2C;3&#x884C;&#x5230;&#x6700;&#x5F8C;&#x4E00;&#x884C;<code>$</code></p>
+<pre><code class="lang-shell">$ nl regular_express.txt | sed &apos;3,$d&apos;
+     1    &quot;Open Source&quot; is a good mechanism to develop programs.
+     2    apple is my favorite food.
+</code></pre>
+<h3 id="&#x4EE5;&#x884C;&#x70BA;&#x55AE;&#x4F4D;&#x7684;&#x65B0;&#x589E;">&#x4EE5;&#x884C;&#x70BA;&#x55AE;&#x4F4D;&#x7684;&#x65B0;&#x589E;</h3>
+<h4 id="a-&#x884C;&#x4E4B;&#x5F8C;&#x65B0;&#x589E;"><code>a</code>: &#x884C;&#x4E4B;&#x5F8C;&#x65B0;&#x589E;</h4>
+<pre><code class="lang-shell">$ nl regular_express.txt  | sed &apos;2a helloworld&apos;
+     1    &quot;Open Source&quot; is a good mechanism to develop programs.
+     2    apple is my favorite food.
+helloworld
+     3    Football game is not use feet only.
+     4    this dress doesn&apos;t fit me.
+</code></pre>
+<p>&#x82E5;&#x8981;&#x65B0;&#x589E;&#x591A;&#x884C;&#xFF0C;&#x900F;&#x904E; <code>\</code>&#xFF0C;&#x8981;&#x63DB;&#x884C;&#x5F8C;&#x624D;&#x6709;&#x6548;&#x679C;&#xFF01;</p>
+<pre><code class="lang-shell">$ nl regular_express.txt | sed &apos;2a helloworld \
+&gt; hola!&apos;
+     1    &quot;Open Source&quot; is a good mechanism to develop programs.
+     2    apple is my favorite food.
+helloworld 
+hola!
+     3    Football game is not use feet only.
+     4    this dress doesn&apos;t fit me.
+</code></pre>
+<h4 id="i-&#x884C;&#x4E4B;&#x524D;&#x65B0;&#x589E;"><code>i</code>: &#x884C;&#x4E4B;&#x524D;&#x65B0;&#x589E;</h4>
+<pre><code class="lang-shell">$ nl regular_express.txt  | sed &apos;2i helloworld&apos;
+     1    &quot;Open Source&quot; is a good mechanism to develop programs.
+helloworld
+     2    apple is my favorite food.
+     3    Football game is not use feet
+</code></pre>
+<h3 id="&#x4EE5;&#x884C;&#x70BA;&#x55AE;&#x4F4D;&#x7684;&#x53D6;&#x4EE3;">&#x4EE5;&#x884C;&#x70BA;&#x55AE;&#x4F4D;&#x7684;&#x53D6;&#x4EE3;</h3>
+<h4 id="&#x5C07;&#x7B2C;2-5&#x884C;&#x53D6;&#x4EE3;&#x6210;-no-2-5-number">&#x5C07;&#x7B2C;2-5&#x884C;&#x53D6;&#x4EE3;&#x6210; <code>No 2-5 number</code></h4>
+<pre><code class="lang-shell">$ nl regular_express.txt  | sed &apos;2,5c No 2-5 number&apos;
+     1    &quot;Open Source&quot; is a good mechanism to develop programs.
+No 2-5 number
+     6    GNU is free air not free beer.
+     7    Her hair is very beauty.
+</code></pre>
+<div style="
+border-radius: 10px;
+padding: 20px;
+background-color: #C8FAFF;
+color: black;
+margin-bottom: 15px;
+">
+
+&#x53EF;&#x7528; sed &#x4F86;&#x53D6;&#x4EE3; &#x4EE5;&#x5F80;&#x7528; `head -n 10 | tail -n 20` &#x627E;&#x5C0B; &#x7B2C;10~20&#x884C;&#x7684;&#x5167;&#x5BB9; !
+
+&#x4E0D;&#x904E;&#x8981;&#x8A18;&#x5F97;&#x52A0;&#x4E0A; `-n` (&#x8868;&#x793A;&#x53EA;&#x986F;&#x793A;&#x51FA;&#x8655;&#x7406;&#x904E;&#x7684;&#x5167;&#x5BB9;)
+&#x5426;&#x5247;&#x4E5F;&#x6703;&#x628A;&#x5176;&#x4ED6;10~20&#x4E4B;&#x5916;&#x7684;&#x5167;&#x5BB9;&#x4E5F;&#x5370;&#x51FA;&#x4F86;
+</div>
+
+<pre><code class="lang-shell">$ nl regular_express.txt  | sed -n &apos;10,20p&apos;
+     5    However, this dress is about $ 3183 dollars.
+     6    GNU is free air not free beer.
+     7    Her hair is very beauty.
+</code></pre>
+<h3 id="&#x90E8;&#x5206;&#x8CC7;&#x6599;&#x7684;&#x641C;&#x5C0B;&#x8207;&#x53D6;&#x4EE3;">&#x90E8;&#x5206;&#x8CC7;&#x6599;&#x7684;&#x641C;&#x5C0B;&#x8207;&#x53D6;&#x4EE3;</h3>
+<p><code>sed &apos;s/&#x8981;&#x88AB;&#x53D6;&#x4EE3;&#x7684;&#x5B57;&#x4E32;/&#x65B0;&#x7684;&#x5B57;&#x4E32;/g&apos;</code></p>
+<h4 id="&#x5047;&#x8A2D;&#x4EE5;&#x67E5;&#x8A62;ip&#x70BA;&#x7BC4;&#x4F8B;">&#x5047;&#x8A2D;&#x4EE5;&#x67E5;&#x8A62;ip&#x70BA;&#x7BC4;&#x4F8B;</h4>
+<pre><code>eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 192.168.1.100  netmask 255.255.255.0  broadcast 192.168.1.255
+        ether 52:54:00:df:e1:74  txqueuelen 1000  (Ethernet)
+</code></pre><ol>
+<li>&#x5047;&#x8A2D;&#x8981;&#x64F7;&#x53D6;&#x51FA; inet &#x90A3;&#x4E00;&#x884C;</li>
+</ol>
+<pre><code class="lang-shell">cat ifconfig | grep &apos;inet&apos;
+        inet 192.168.1.100  netmask 255.255.255.0  broadcast 192.168.1.255
+</code></pre>
+<ol>
+<li>&#x900F;&#x904E; sed, &#x5C07;ip&#x524D;&#x9762;&#x5167;&#x5BB9;&#x7D66;&#x79FB;&#x9664; <code>sed &apos;s/^.*inet //g&apos;</code></li>
+</ol>
+<pre><code class="lang-shell">$ cat ifconfig | grep &apos;inet&apos;  | sed &apos;s/^.*inet //g&apos;
+192.168.1.100  netmask 255.255.255.0  broadcast 192.168.1.255
+</code></pre>
+<ol>
+<li>&#x518D;&#x5C07;ip&#x5F8C;&#x9762;&#x5167;&#x5BB9;&#x7D66;&#x522A;&#x9664; <code>sed &apos;s/netmask.*$//g&apos;</code></li>
+</ol>
+<pre><code class="lang-shell">$ cat ifconfig | grep &apos;inet&apos; | sed &apos;s/^.*inet //g&apos; | sed &apos;s/netmask.*$//g&apos;
+192.168.1.100
+</code></pre>
+<h4 id="&#x4E0D;&#x8981;&#x6709;&#x7A7A;&#x767D;&#x884C;&#x8207;&#x8A3B;&#x89E3;">&#x4E0D;&#x8981;&#x6709;&#x7A7A;&#x767D;&#x884C;&#x8207;&#x8A3B;&#x89E3;</h4>
+<p>&#x5047;&#x8A2D;&#x6709;&#x4E00;&#x7BC4;&#x4F8B;&#x5982;&#x4E0B;&#xFF0C;&#x60F3;&#x8981;&#x53EA;&#x53D6;&#x5F97;&#x6709;&#x5167;&#x5BB9;&#x7684;&#x90E8;&#x5206; (6-8&#x884C;)</p>
+<pre><code class="lang-="># MANDATORY_MANPATH                     manpath_element
+# MANPATH_MAP           path_element    manpath_element
+# MANDB_MAP             global_manpath  [relative_catpath]
+# every automatically generated MANPATH includes these fields
+
+MANDATORY_MANPATH                       /usr/man
+MANDATORY_MANPATH                       /usr/share/man
+MANDATORY_MANPATH                       /usr/local/share/man
+</code></pre>
+<ol>
+<li>&#x5148;&#x522A;&#x9664;&#x8A3B;&#x89E3;&#x7684;&#x5167;&#x5BB9; <code>sed &apos;s/#.*$//g&apos;</code></li>
+</ol>
+<pre><code class="lang-shell">$ cat man_db.conf | grep &apos;MAN&apos; | sed &apos;s/#.*$//g&apos;
+
+
+
+
+MANDATORY_MANPATH                       /usr/man
+MANDATORY_MANPATH                       /usr/share/man
+MANDATORY_MANPATH                       /usr/local/share/man
+</code></pre>
+<ol>
+<li>&#x5728;&#x522A;&#x9664;&#x7A7A;&#x767D;&#x884C; <code>sed &apos;/^$/d&apos;</code></li>
+</ol>
+<pre><code class="lang-shell">$ cat man_db.conf | grep &apos;MAN&apos; | sed &apos;s/#.*$//g&apos; | sed &apos;/^$/d&apos;
+MANDATORY_MANPATH                       /usr/man
+MANDATORY_MANPATH                       /usr/share/man
+MANDATORY_MANPATH                       /usr/local/share/man
+</code></pre>
+<h3 id="&#x76F4;&#x63A5;&#x4FEE;&#x6539;&#x6A94;&#x6848;&#x5167;&#x5BB9;-&#x5371;&#x96AA;&#x52D5;&#x4F5C;">&#x76F4;&#x63A5;&#x4FEE;&#x6539;&#x6A94;&#x6848;&#x5167;&#x5BB9; (&#x5371;&#x96AA;&#x52D5;&#x4F5C;)</h3>
+<p>&#x900F;&#x904E; <code>sed -i</code> &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5C0D;&#x6A94;&#x6848;&#x505A;&#x4FEE;&#x6539;</p>
+<h4 id="&#x5C07;&#x6709;&#x7D50;&#x5C3E;&#x70BA;--&#x90FD;&#x4FEE;&#x6539;&#x6210;-">&#x5C07;&#x6709;&#x7D50;&#x5C3E;&#x70BA; <code>.</code> &#x90FD;&#x4FEE;&#x6539;&#x6210; <code>!</code></h4>
+<pre><code class="lang-shell">sed -i &apos;s/\.$/\!/g&apos; regular_express.txt 
+ns3@ns3-VirtualBox:~/regex$ cat regular_express.txt 
+&quot;Open Source&quot; is a good mechanism to develop programs!
+apple is my favorite food!
+Football game is not use feet only!
+this dress doesn&apos;t fit me!
+However, this dress is about $ 3183 dollars.
+GNU is free air not free beer.
+</code></pre>
+<div style="
+border-radius: 10px;
+padding: 20px;
+background-color: #C8FAFF;
+color: black;
+margin-bottom: 15px;
+">
+
+&#x900F;&#x904E;sed&#x76F4;&#x63A5;&#x5C0D;&#x6A94;&#x6848;&#x505A;&#x4FEE;&#x6539;&#x518D;&#x6A94;&#x6848;&#x5167;&#x5BB9;&#x5F88;&#x5927;&#x7684;&#x60C5;&#x6CC1;&#x4E0B;&#x5F88;&#x6709;&#x5E6B;&#x52A9;
+
+&#x4F8B;&#x5982;&#x8981;&#x518D;100&#x842C;&#x884C;&#x7684;&#x6A94;&#x6848;&#xFF0C;&#x7B2C;50&#x842C;&#x884C;&#x52A0;&#x5165;&#x67D0;&#x4E9B;&#x6587;&#x5B57;&#xFF0C;&#x53EF;&#x76F4;&#x63A5;&#x7528; `sed` &#x4F86;&#x6DFB;&#x52A0;&#xFF01;
+
+</div>
+
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ch11-1.html" class="navigation navigation-prev " aria-label="Previous page: 11.1 基礎正規表示法">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ch11-3.html" class="navigation navigation-next " aria-label="Next page: 11.3 延伸正規表示法">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"11.2 sed：以行為單位進行處理的工具","level":"1.4.2","depth":2,"next":{"title":"11.3 延伸正規表示法","level":"1.4.3","depth":2,"path":"ch11/ch11-3.md","ref":"ch11/ch11-3.md","articles":[]},"previous":{"title":"11.1 基礎正規表示法","level":"1.4.1","depth":2,"path":"ch11/ch11-1.md","ref":"ch11/ch11-1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["disqus","intopic-toc","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"MessageBoard"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"內容綱要","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch11/ch11-2.md","mtime":"2020-10-24T10:15:34.452Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-24T10:09:06.800Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
